@@ -382,3 +382,51 @@ body::after { background: radial-gradient(ellipse 120% 90% at 50% 40%, transpare
 .unitcard .review-mini { position: absolute; right: 18px; bottom: 18px; }
 .unitcard:hover .unitbtn { border-color: var(--gold); }
 @media (max-width: 520px) { .unitcard .review-mini { position: static; } }
+
+/* ---------- Altura completa: el contenido llena la pantalla (móvil y PC) ---------- */
+/* La página ocupa todo el alto visible; cada pantalla se centra en vertical en el
+   espacio libre bajo la cabecera, en vez de quedarse pegada arriba. */
+body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; padding-block: clamp(14px, 3vh, 32px) max(clamp(18px, 4vh, 40px), env(safe-area-inset-bottom, 0px)); }
+.wrap { flex: 1; width: 100%; gap: clamp(14px, 2.5vh, 26px); }
+/* Menú, preparación y progreso: cabecera + contenido como un solo bloque centrado */
+.wrap { justify-content: center; }
+#app { display: flex; flex-direction: column; gap: 18px; }
+#app > * { width: 100%; }
+/* Partida: cabecera y jugadores arriba; ruleta, turno o pregunta centrados en lo que queda */
+.wrap:has(#game) { justify-content: flex-start; }
+.wrap:has(#game) #app, #game { flex: 1; }
+#game .stage { flex: 1; justify-content: center; }
+/* Ruleta: crece con el alto de la pantalla, sin pasarse del ancho */
+.wheelbox { width: clamp(260px, calc(100dvh - 380px), 560px); max-width: min(100%, 88vw); }
+/* Menú: tarjeta de unidad más generosa en PC */
+@media (min-width: 900px) {
+  .units { grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); }
+  .unitcard .unitbtn { padding: 22px 24px; gap: 24px; }
+  .unit-name { font-size: 26px; }
+}
+/* Móvil apaisado o pantallas bajas: sin centrar, se prioriza ver todo con scroll normal */
+@media (max-height: 520px) {
+  .wrap { justify-content: flex-start; }
+}
+/* Móvil: botones de idioma/sonido en una sola fila; en partida, título + reloj + Salir arriba */
+@media (max-width: 520px) {
+  .tools { gap: 6px; }
+  .tools .seg { gap: 6px; }
+  .tools .seg button, .tog { font-size: 13px; padding: 6px 9px; border-radius: 10px; }
+  .tog { gap: 6px; }
+  .tog::before { width: 9px; height: 9px; }
+  .top.compact { gap: 8px 10px; }
+  .top.compact .title { flex: 1 1 0; }
+  .top.compact h1 { font-size: 21px; }
+  .top.compact .hslot { order: 1; gap: 8px; }
+  .top.compact .clock { font-size: 17px; }
+  .top.compact .hslot .btn.small { font-size: 15px; padding: 6px 10px; }
+  .top.compact .tools { order: 2; width: 100%; }
+  /* Jugadores en dos columnas */
+  .players { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+  .pcard { padding: 8px; gap: 8px; border-width: 2px; }
+  .pcard .av { font-size: 24px; }
+  .pcard .nm { font-size: 16px; }
+  .pcard .sub { font-size: 12px; }
+  .pcard > svg { width: 34px; height: 34px; flex: none; }
+}
