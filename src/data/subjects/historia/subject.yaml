@@ -1,0 +1,14 @@
+# Materia: Historia
+id: historia
+nombre: { es: Historia, va: Història }
+emoji: "🏺"
+orden: 10
+personajes:
+  - { emoji: "🦬", nombre: { es: Bisonte, va: Bisó } }
+  - { emoji: "🦣", nombre: { es: Mamut, va: Mamut } }
+  - { emoji: "🐻", nombre: { es: Oso, va: Ós } }
+  - { emoji: "🐺", nombre: { es: Lobo, va: Llop } }
+  - { emoji: "🐗", nombre: { es: Jabalí, va: Senglar } }
+  - { emoji: "🦌", nombre: { es: Ciervo, va: Cérvol } }
+  - { emoji: "🦅", nombre: { es: Águila, va: Àguila } }
+  - { emoji: "🐢", nombre: { es: Tortuga, va: Tortuga } }

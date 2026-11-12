@@ -1,0 +1,634 @@
+<title>Carrera de la Prehistoria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Nunito:wght@400;700;800&display=swap">
+<style>
+/* Layout: mesa de juego oscura; barra superior (reloj y sonido), jugadores, y ruleta o pregunta en el centro.
+   Look unico a proposito: un juego de mesa retro que siempre se ve igual. */
+:root {
+  color-scheme: dark;
+  --bg: #241638;
+  --panel: #2F1E47;
+  --line: #4A3568;
+  --ink: #1B1230;
+  --cream: #FFF4DC;
+  --muted: #CDBDE0;
+  --good: #4ADE80;
+  --bad: #FF7A7A;
+  --gold: #FFD23F;
+  --display: 'Fredoka', 'Trebuchet MS', Arial, sans-serif;
+  --body: 'Nunito', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.4;
+  padding-block: 20px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; margin: 0; text-wrap: balance; line-height: 1.1; }
+h1 { font-size: clamp(32px, 6vw, 54px); }
+button { font: inherit; cursor: pointer; color: inherit; }
+button:focus-visible, input:focus-visible, summary:focus-visible, #hub:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.btn {
+  background: var(--cream); color: var(--ink); border: 0; border-radius: 16px;
+  padding: 14px 26px; font-family: var(--display); font-weight: 600; font-size: 22px;
+  box-shadow: 0 5px 0 rgba(0,0,0,.4); transition: transform .08s;
+}
+.btn:hover:not(:disabled) { transform: translateY(-2px); }
+.btn:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.4); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn.big { font-size: 26px; padding: 16px 40px; background: var(--gold); }
+.btn.small { font-size: 18px; padding: 8px 16px; border-radius: 12px; box-shadow: 0 3px 0 rgba(0,0,0,.4); }
+.panel { background: var(--panel); border: 2px solid var(--line); border-radius: 20px; padding: 22px; }
+.muted { color: var(--muted); }
+
+/* Cabecera y barra de sonido */
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; }
+.title { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.title p { margin: 0; font-size: 20px; color: var(--muted); max-width: 56ch; }
+.tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.tog { background: var(--panel); border: 2px solid var(--line); border-radius: 12px; padding: 8px 14px; font-weight: 800; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
+.tog::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #6B5A82; }
+.tog[aria-pressed="true"] { border-color: var(--good); }
+.tog[aria-pressed="true"]::before { background: var(--good); }
+
+/* Preparación */
+.cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; padding: 0; margin: 0; list-style: none; }
+.cats li { display: flex; align-items: center; gap: 10px; font-weight: 700; min-width: 0; }
+.dot { width: 28px; height: 28px; border-radius: 50%; flex: none; border: 2px solid rgba(0,0,0,.35); display: grid; place-items: center; font-size: 15px; }
+.seg { display: flex; gap: 10px; flex-wrap: wrap; }
+.seg button { background: transparent; border: 2px solid var(--line); border-radius: 14px; padding: 10px 18px; font-weight: 800; }
+.seg button[aria-pressed="true"] { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.setrow { display: flex; flex-direction: column; gap: 8px; }
+.setrow > b { font-family: var(--display); font-size: 20px; }
+.pset { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.pbox { background: var(--bg); border: 2px solid var(--line); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.pbox label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; color: var(--muted); font-size: 15px; }
+.pbox input { background: var(--panel); color: var(--cream); border: 2px solid var(--line); border-radius: 12px; padding: 9px 12px; font: inherit; }
+.avs { display: flex; flex-wrap: wrap; gap: 6px; }
+.avs button { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--line); background: var(--panel); font-size: 24px; line-height: 1; padding: 0; }
+.avs button[aria-pressed="true"] { border-color: var(--gold); background: #4A3568; }
+details { color: var(--muted); }
+details summary { cursor: pointer; font-weight: 800; color: var(--cream); }
+details ol { margin: 10px 0 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+
+/* Barra de juego y jugadores */
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.clock { font-family: var(--display); font-weight: 600; font-size: 24px; font-variant-numeric: tabular-nums; }
+.players { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.pcard { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 3px solid var(--line); border-radius: 18px; padding: 10px 12px; min-width: 0; }
+.pcard.on { border-color: var(--gold); background: #3A2658; }
+.pcard .av { font-size: 34px; line-height: 1; flex: none; }
+.pcard .who { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.pcard .nm { font-family: var(--display); font-weight: 600; font-size: 19px; overflow-wrap: anywhere; line-height: 1.15; }
+.pcard .sub { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pcard.on .sub { color: var(--gold); font-weight: 800; }
+
+/* Ruleta */
+.stage { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.turn { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 4vw, 34px); }
+.wheelbox { position: relative; width: min(88vw, 460px); aspect-ratio: 1; max-width: 100%; }
+.wheelbox svg { width: 100%; height: 100%; display: block; overflow: visible; }
+#wheelG { transform-origin: 200px 200px; transition: transform 3.6s cubic-bezier(.12,.7,.1,1); }
+#hub { cursor: pointer; }
+#hub.off { cursor: default; }
+#hub .ring { fill: none; stroke: var(--gold); stroke-width: 4; transform-box: fill-box; transform-origin: center; animation: pulse 1.4s ease-out infinite; }
+#hub.off .ring { animation: none; opacity: 0; }
+@keyframes pulse { from { transform: scale(1); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
+.hint { color: var(--muted); font-weight: 700; margin: 0; }
+.banner { min-height: 36px; font-family: var(--display); font-size: 26px; font-weight: 600; }
+
+/* Pregunta */
+.qcard { width: 100%; background: var(--cream); color: var(--ink); border-radius: 24px; padding: clamp(18px, 3vw, 30px); display: flex; flex-direction: column; gap: 16px; text-align: left; border-top: 14px solid var(--cc, var(--gold)); }
+.qhead { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: space-between; }
+.chip { display: inline-flex; align-items: center; gap: 8px; background: var(--cc); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 16px 4px 10px; font-weight: 800; font-size: 16px; }
+.chip i { font-style: normal; font-size: 22px; }
+.sheet { background: var(--ink); color: var(--gold); border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 14px; }
+.qtext { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.2; }
+.timer { display: flex; align-items: center; gap: 10px; }
+.tbar { flex: 1; height: 14px; border-radius: 999px; background: #E3D6B8; overflow: hidden; border: 2px solid var(--ink); }
+.tbar i { display: block; height: 100%; width: 100%; background: #2E9E5B; }
+.timer.warn .tbar i { background: #D93C3C; }
+.tnum { font-family: var(--display); font-weight: 600; font-size: 22px; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+.timer.warn .tnum { color: #B02525; }
+.tools2 { display: flex; justify-content: flex-end; }
+.fifty { background: var(--ink); color: var(--cream); border: 0; border-radius: 12px; padding: 6px 14px; font-family: var(--display); font-weight: 600; font-size: 17px; }
+.fifty:disabled { opacity: .35; cursor: default; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.opt { display: flex; align-items: flex-start; gap: 12px; text-align: left; background: #FFFFFF; color: var(--ink); border: 3px solid var(--ink); border-radius: 16px; padding: 12px 14px; font-weight: 700; font-size: 19px; min-width: 0; }
+.opt:hover:not(:disabled) { background: #FFF0C2; }
+.opt .k { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--cream); display: grid; place-items: center; font-family: var(--display); }
+.opt .t { min-width: 0; overflow-wrap: anywhere; }
+.opt .tag { display: block; font-size: 14px; font-weight: 800; margin-top: 2px; }
+.opt:disabled { cursor: default; opacity: .6; }
+.opt.gone { opacity: .25; text-decoration: line-through; }
+.opt.right { opacity: 1; border-color: #138A4A; background: #D7F7E3; }
+.opt.right .tag { color: #0B6B37; }
+.opt.wrong { opacity: 1; border-color: #C23B3B; background: #FFE0E0; }
+.opt.wrong .tag { color: #A12727; }
+.explain { background: #EFE6D0; border-radius: 14px; padding: 14px 16px; font-size: 18px; }
+.explain b { display: block; font-family: var(--display); font-size: 22px; margin-bottom: 4px; }
+.actions { display: flex; justify-content: flex-end; }
+.wild { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%; }
+.wild button { display: flex; align-items: center; gap: 10px; background: var(--cream); color: var(--ink); border: 3px solid var(--ink); border-radius: 16px; padding: 14px; font-weight: 800; text-align: left; }
+
+/* Final */
+.win { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding-block: 28px; width: 100%; }
+.win h2 { font-size: clamp(32px, 7vw, 56px); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; width: 100%; }
+.stats div { background: var(--bg); border-radius: 14px; padding: 12px; }
+.stats b { font-family: var(--display); font-size: 22px; display: block; }
+.review { width: 100%; text-align: left; background: var(--bg); border-radius: 14px; padding: 14px 16px; }
+.review h3 { font-size: 22px; margin-bottom: 8px; }
+.review ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.review li span { color: var(--good); font-weight: 800; }
+canvas#fx { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
+
+@media (max-width: 640px) {
+  .opts { grid-template-columns: 1fr; }
+  body { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #wheelG { transition-duration: .4s; }
+  .btn { transition: none; }
+  #hub .ring { animation: none; opacity: 0; }
+}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="title">
+      <h1>Carrera de la Prehistoria</h1>
+      <p>Juego de preguntas de Historia, unidad 8. Gira la ruleta, contesta y reúne los 6 colores.</p>
+    </div>
+    <div class="tools">
+      <button class="tog" id="bgm" type="button" aria-pressed="true">Música</button>
+      <button class="tog" id="snd" type="button" aria-pressed="true">Sonidos</button>
+    </div>
+  </div>
+
+  <section id="setup" class="panel" style="display:flex;flex-direction:column;gap:18px">
+    <h2>¿Quién juega?</h2>
+    <div class="setrow"><b>Jugadores</b><div class="seg" id="count" role="group" aria-label="Número de jugadores"></div></div>
+    <div class="pset" id="pset"></div>
+    <div class="setrow"><b>Tiempo para contestar</b><div class="seg" id="limit" role="group" aria-label="Tiempo por pregunta"></div></div>
+    <div class="setrow">
+      <b>Los 6 colores</b>
+      <ul class="cats" id="catlist"></ul>
+    </div>
+    <details>
+      <summary>Cómo se juega</summary>
+      <ol>
+        <li>En tu turno, toca el centro de la ruleta para girarla. Cae en un color que todavía no tienes.</li>
+        <li>Contesta la pregunta de ese color antes de que se acabe el tiempo. Si aciertas, ganas el quesito y vuelves a girar.</li>
+        <li>Si fallas, pasa el turno al siguiente jugador.</li>
+        <li>El comodín te deja elegir el color que quieras de los que te faltan.</li>
+        <li>Cada jugador tiene una ayuda 50/50 por partida: quita dos respuestas incorrectas.</li>
+        <li>Gana quien consigue los 6 quesitos primero. Se puede jugar solo.</li>
+      </ol>
+    </details>
+    <div><button class="btn big" id="go">¡A jugar!</button></div>
+  </section>
+
+  <section id="game" hidden style="display:flex;flex-direction:column;gap:20px">
+    <div class="bar"><span class="clock" id="clock" aria-label="Tiempo de partida">00:00</span></div>
+    <div class="players" id="players"></div>
+    <div class="stage" id="stage"></div>
+  </section>
+</div>
+<canvas id="fx" hidden></canvas>
+
+<script>
+const CATS = [
+  { name: "La historia y las fuentes", short: "Fuentes", emoji: "🔎", color: "#5BA4FF" },
+  { name: "El tiempo: siglos y edades", short: "Tiempo", emoji: "⏳", color: "#FFD23F" },
+  { name: "Evolución humana", short: "Evolución", emoji: "🧬", color: "#FF7AB6" },
+  { name: "El Paleolítico", short: "Paleolítico", emoji: "🔥", color: "#FF9F43" },
+  { name: "Neolítico y edad de los metales", short: "Neolítico", emoji: "🌾", color: "#4ADE80" },
+  { name: "Arte y España", short: "Arte", emoji: "🎨", color: "#B79CFF" }
+];
+const AVATARS = [
+  ["🦬", "Bisonte"], ["🦣", "Mamut"], ["🐻", "Oso"], ["🐺", "Lobo"],
+  ["🐗", "Jabalí"], ["🦌", "Ciervo"], ["🦅", "Águila"], ["🐢", "Tortuga"]
+];
+
+// [categoría, pregunta, correcta, [3 incorrectas], explicación, 1 = también está en la hoja de repaso]
+const QS = [
+  [0,"¿Qué es la Historia?","La ciencia que investiga cómo vivían las personas en otras épocas",["La ciencia que estudia las estrellas y los planetas","La ciencia que estudia las rocas y los minerales","El conjunto de cuentos y leyendas de un pueblo"],"La Historia es la ciencia que investiga cómo vivían las personas en otras épocas.",1],
+  [0,"Las fuentes de la historia son…","los restos y testimonios que dejaron nuestros antepasados",["los libros que se escriben hoy en las escuelas","los mapas de carreteras actuales","las películas de ciencia ficción"],"Son los restos y testimonios que dejaron nuestros antepasados.",1],
+  [0,"Una fuente primaria la elaboró alguien que…","participó en los hechos o los observó directamente",["vivió siglos después de los hechos","solo oyó rumores de otra persona","escribió un libro de texto actual"],"Las fuentes primarias las hacen personas que participaron en los hechos o los observaron directamente.",1],
+  [0,"Las fuentes secundarias son…","posteriores a los hechos y suelen ser obra de historiadores",["las más antiguas de todas","las que se escriben mientras ocurren los hechos","solo las imágenes y fotografías"],"Son fuentes posteriores a los hechos de los que informan.",1],
+  [0,"Un discurso o una entrevista son fuentes…","orales",["escritas","iconográficas","materiales"],"Las fuentes orales son informaciones narradas o contadas: discursos, entrevistas…",1],
+  [0,"Un diario o un periódico son fuentes…","escritas",["orales","iconográficas","materiales"],"Las fuentes escritas son textos sobre el pasado: diarios, prensa…",1],
+  [0,"Un mapa o una fotografía son fuentes…","iconográficas",["orales","escritas","materiales"],"Las fuentes iconográficas son imágenes referidas al pasado: mapas, fotografías…",1],
+  [0,"Una moneda o una escultura son fuentes…","materiales",["orales","escritas","iconográficas"],"Las fuentes materiales son construcciones y objetos del pasado: monedas, esculturas…",1],
+  [0,"Un libro de texto actual sobre la Edad Media es una fuente…","secundaria",["primaria","oral","material"],"Lo escribe alguien que no vivió los hechos, así que es secundaria."],
+  [0,"El diario que escribió un soldado durante una batalla es una fuente…","primaria y escrita",["secundaria y escrita","primaria y material","secundaria e iconográfica"],"Lo escribió quien vivió los hechos (primaria) y es un texto (escrita)."],
+
+  [1,"¿Cuántos años tiene un siglo?","100",["10","50","1.000"],"Un siglo son 100 años.",1],
+  [1,"¿Cuántos años tiene un milenio?","1.000",["100","500","10.000"],"Un milenio son 1.000 años.",1],
+  [1,"¿A qué siglo pertenece el año 1936?","Siglo XX",["Siglo XIX","Siglo XXI","Siglo XVIII"],"Truco: 19 + 1 = 20, siglo XX.",1],
+  [1,"¿A qué siglo pertenece el año 1492?","Siglo XV",["Siglo XIV","Siglo XVI","Siglo XIII"],"14 + 1 = 15, siglo XV.",1],
+  [1,"¿A qué siglo pertenece el año 1600?","Siglo XVI",["Siglo XVII","Siglo XV","Siglo XIV"],"Si el año acaba en 00 no se suma 1: 1600 es del siglo XVI."],
+  [1,"¿A qué siglo pertenece el año 711?","Siglo VIII",["Siglo VII","Siglo IX","Siglo VI"],"7 + 1 = 8, siglo VIII.",1],
+  [1,"¿A qué siglo pertenece el año 44 aC?","Siglo I aC",["Siglo II aC","Siglo I dC","Siglo IV aC"],"Con años aC se hace igual: 0 + 1 = 1, siglo I aC.",1],
+  [1,"¿A qué siglo pertenece el año 375 aC?","Siglo IV aC",["Siglo III aC","Siglo V aC","Siglo IV dC"],"3 + 1 = 4, siglo IV aC."],
+  [1,"¿A qué siglo pertenece el año 476?","Siglo V",["Siglo IV","Siglo VI","Siglo III"],"4 + 1 = 5, siglo V.",1],
+  [1,"¿A qué siglo pertenece el año 1808?","Siglo XIX",["Siglo XVIII","Siglo XX","Siglo XVII"],"18 + 1 = 19, siglo XIX.",1],
+  [1,"¿A qué siglo pertenece el año 1789?","Siglo XVIII",["Siglo XVII","Siglo XIX","Siglo XVI"],"17 + 1 = 18, siglo XVIII.",1],
+  [1,"¿A qué siglo pertenece el año 1238?","Siglo XIII",["Siglo XII","Siglo XIV","Siglo XI"],"12 + 1 = 13, siglo XIII.",1],
+  [1,"¿Entre qué años va el siglo I?","Del año 1 al 100",["Del año 0 al 99","Del año 100 al 200","Del año 1 al 10"],"El siglo I va del año 1 al 100; el II, del 101 al 200…",1],
+  [1,"¿Entre qué años va el siglo XXI?","2001 – 2100",["1901 – 2000","2000 – 2099","2101 – 2200"],"El siglo XXI va del año 2001 al 2100.",1],
+  [1,"¿Qué separa la prehistoria de la historia?","La aparición de la escritura",["El descubrimiento del fuego","La llegada de la agricultura","El invento de la rueda"],"La escritura aparece hace unos 5.000 años.",1],
+  [1,"¿Cuál es el orden correcto de las edades de la historia?","Prehistoria, Antigua, Media, Moderna, Contemporánea",["Antigua, Prehistoria, Media, Moderna, Contemporánea","Prehistoria, Media, Antigua, Contemporánea, Moderna","Prehistoria, Antigua, Moderna, Media, Contemporánea"],"Es el orden en que ocurrieron, de más antigua a más reciente.",1],
+  [1,"¿Qué edad va desde la escritura hasta el año 476?","La Edad Antigua",["La Edad Media","La Edad Moderna","La Edad Contemporánea"],"Edad Antigua: de hace unos 5.000 años hasta el año 476.",1],
+  [1,"¿Entre qué años va la Edad Media?","476 – 1492",["1492 – 1789","1789 – hoy","Hace 5.000 años – 476"],"Edad Media: del año 476 al 1492.",1],
+  [1,"¿Qué edad va de 1492 a 1789?","La Edad Moderna",["La Edad Media","La Edad Contemporánea","La Edad Antigua"],"Edad Moderna: de 1492 a 1789.",1],
+  [1,"¿Cómo se llama la edad que empieza en 1789 y llega hasta hoy?","Edad Contemporánea",["Edad Moderna","Edad Media","Edad Antigua"],"Edad Contemporánea: de 1789 hasta hoy.",1],
+  [1,"¿Cuál es la edad más larga de la historia?","La Prehistoria",["La Edad Antigua","La Edad Media","La Edad Moderna"],"La prehistoria dura desde hace unos 5 millones de años hasta hace unos 5.000."],
+
+  [2,"¿Qué es el proceso de hominización?","El largo proceso evolutivo por el que nuestros antepasados adquirieron las características que nos diferencian de otros primates",["La construcción de las primeras casas","El paso de la caza a la agricultura","El invento de la escritura"],"Es el largo proceso evolutivo hasta el ser humano actual.",1],
+  [2,"¿Qué es el bipedismo?","Caminar sobre los dos pies sin ayuda de las manos",["Vivir en cuevas","Fabricar herramientas de piedra","Cazar en grupo"],"Bipedismo: caminar sobre los dos pies.",1],
+  [2,"Además del bipedismo, ¿qué rasgo adquirieron nuestros antepasados?","El pulgar oponible y un cerebro más grande",["Una cola larga y garras","Alas pequeñas","Un pelaje mucho más espeso"],"Adquirieron el pulgar oponible y un cerebro más grande y complejo.",1],
+  [2,"¿Qué ventaja dio el bipedismo?","Ampliar el campo de visión y liberar las manos",["Correr más rápido que un león","Dejar de necesitar comida","Poder vivir en el agua"],"Con dos pies se ve más lejos y las manos quedan libres para otras tareas.",1],
+  [2,"¿Cuál es la especie más antigua de la lista, de hace 4,4 millones de años?","Ardipithecus",["Homo sapiens","Homo erectus","Homo antecessor"],"Ardipithecus: hace unos 4,4 millones de años."],
+  [2,"¿Qué especie usó el fuego y fue la primera en salir de África?","Homo erectus",["Homo habilis","Homo neanderthalensis","Homo antecessor"],"Homo erectus, hace unos 1,5 millones de años."],
+  [2,"¿Qué especie vivió hace unos 800.000 años y dejó fósiles en Atapuerca?","Homo antecessor",["Homo erectus","Homo sapiens","Homo neanderthalensis"],"Homo antecessor, en Atapuerca."],
+  [2,"¿Qué especie enterraba a sus muertos?","Homo neanderthalensis",["Homo habilis","Australopithecus","Ardipithecus"],"Homo neanderthalensis, hace unos 200.000 años."],
+  [2,"¿Qué especie desarrolló el lenguaje y el arte?","Homo sapiens",["Homo erectus","Homo antecessor","Australopithecus"],"Homo sapiens, hace unos 195.000 años: somos nosotros."],
+  [2,"¿Cuándo empieza la prehistoria?","Hace unos 5 millones de años",["Hace unos 5.000 años","Hace unos 10.000 años","Hace unos 500.000 años"],"Con los primeros humanos, hace unos 5 millones de años.",1],
+  [2,"¿Qué diferencia hay entre prehistoria y Paleolítico?","El Paleolítico es solo la primera etapa de la prehistoria",["Son exactamente lo mismo","La prehistoria es solo la edad de los metales","El Paleolítico viene después de la escritura"],"La prehistoria incluye Paleolítico, Neolítico y edad de los metales.",1],
+
+  [3,"¿Cuándo termina el Paleolítico?","Hace unos 10.000 años",["Hace unos 5.000 años","Hace unos 7.000 años","Hace unos 500.000 años"],"El Paleolítico llega hasta hace unos 10.000 años.",1],
+  [3,"Las personas nómadas son las que…","no viven siempre en el mismo sitio",["viven en poblados permanentes","cultivan campos","construyen megalitos"],"Los nómadas se desplazan buscando alimento.",1],
+  [3,"¿Cómo conseguían los alimentos en el Paleolítico?","Recolectaban, cazaban y pescaban",["Cultivaban trigo y cebada","Criaban ovejas y cabras","Los compraban en el mercado"],"Recolección de frutos y raíces, caza y pesca.",1],
+  [3,"¿Cuántas personas tenía una tribu?","De 20 a 40",["De 2 a 5","De 100 a 200","Más de 1.000"],"Una tribu era un grupo de unas 20 a 40 personas."],
+  [3,"¿Hace cuánto se empezó a usar el fuego, aproximadamente?","Hace unos 500.000 años",["Hace unos 5.000 años","Hace unos 40.000 años","Hace unos 10.000 años"],"El fuego: hace unos 500.000 años.",1],
+  [3,"¿De qué materiales eran las herramientas del Paleolítico?","Piedra (sílex), huesos y cuernos",["Cobre y bronce","Hierro","Cerámica y lino"],"Piedra, huesos y cuernos de animales.",1],
+  [3,"¿Cuándo se desarrolló el lenguaje, aproximadamente?","Entre hace 70.000 y 30.000 años",["Hace 5.000 años","Hace 500.000 años","Hace 7.000 años"],"El lenguaje apareció entre hace 70.000 y 30.000 años.",1],
+  [3,"¿Cuándo aparece el arte rupestre?","Hace unos 40.000 años",["Hace unos 4.000 años","Hace unos 400.000 años","Hace unos 7.000 años"],"El arte rupestre aparece hace unos 40.000 años.",1],
+  [3,"¿Dónde vivían las personas del Paleolítico?","En cuevas o en cabañas fáciles de montar y desmontar",["En poblados amurallados","En casas permanentes junto a los campos","En barcos de vela"],"Eran nómadas: cuevas naturales o cabañas desmontables, cerca de ríos o lagos.",1],
+  [3,"¿Cuál de estos objetos se hacía en el Paleolítico?","Arpones y anzuelos",["Hoces","Telares","Molinos de mano"],"Hoces, telares y molinos son del Neolítico.",1],
+  [3,"Los bifaces, las lascas y los raspadores son herramientas del…","Paleolítico",["Neolítico","Edad de los metales","Edad Media"],"Son herramientas de piedra del Paleolítico.",1],
+
+  [4,"¿Cuándo fue el Neolítico?","De hace 10.000 a 7.000 años",["De hace 5 millones a 10.000 años","De hace 7.000 a 5.000 años","De hace 500.000 a 40.000 años"],"Neolítico: de hace unos 10.000 a 7.000 años.",1],
+  [4,"¿Qué inventaron en el Neolítico?","La agricultura y la ganadería",["El fuego","La escritura","El arte rupestre"],"Empezaron a producir sus alimentos.",1],
+  [4,"Las personas sedentarias son las que…","viven de forma permanente en un lugar",["viajan siguiendo a los animales","viven solo en cuevas","no tienen herramientas"],"Sedentario: vive de forma permanente en un lugar.",1],
+  [4,"¿Dónde vivían en el Neolítico?","En aldeas o poblados permanentes cerca de los campos",["En cuevas, siguiendo a los animales","En barcos","En campamentos que montaban cada día"],"Eran sedentarios y vivían cerca de sus cultivos.",1],
+  [4,"¿Para qué sirve un telar?","Para fabricar tejidos",["Para encender fuego","Para cortar la hierba","Para pintar cuevas"],"El telar apareció en el Neolítico para hacer tejidos.",1],
+  [4,"¿De qué eran las hachas del Neolítico?","Piedra pulida",["Bronce","Hierro","Cobre"],"Hachas de piedra pulida, azadas, hoces…",1],
+  [4,"Las hoces, las azadas y los molinos de mano son herramientas del…","Neolítico",["Paleolítico","Edad de los metales","Edad Antigua"],"Sirven para cultivar y moler el grano.",1],
+  [4,"La cerámica del Neolítico se usaba para hacer…","recipientes y cuencos",["hachas de metal","puntas de flecha","pinturas rupestres"],"Atifells y bols de cerámica.",1],
+  [4,"¿Cuándo fue la edad de los metales?","De hace 7.000 a 5.000 años",["De hace 10.000 a 7.000 años","De hace 5 millones a 10.000 años","De hace 500.000 a 40.000 años"],"Edad de los metales: de hace 7.000 a 5.000 años.",1],
+  [4,"¿De qué material se hacían las herramientas en la edad de los metales?","De metal",["Solo de piedra","Solo de hueso","De cerámica"],"Herramientas más complejas y duraderas, de metal.",1],
+  [4,"¿Qué objetos de metal se fabricaban en la edad de los metales?","Hachas y joyas",["Hoces de piedra","Telares","Arpones de hueso"],"Hacha de metal y joyas de metal.",1],
+  [4,"¿Qué dos inventos llegan con la edad de los metales?","La rueda y la vela",["El fuego y el lenguaje","La agricultura y la ganadería","La escritura y el papel"],"El trabajo del metal, la rueda y la vela.",1],
+  [4,"¿Cómo eran los poblados de la edad de los metales?","A menudo fortificados o amurallados",["Siempre cuevas","Sin casas","Móviles, se desmontaban cada día"],"Por ejemplo, Los Millares y El Argar.",1],
+
+  [5,"¿En qué año declaró la UNESCO a Atapuerca Patrimonio de la Humanidad?","En el año 2000",["En 1990","En 2010","En 1950"],"Atapuerca: Patrimonio de la UNESCO en el año 2000."],
+  [5,"¿Qué antigüedad tiene la mandíbula de la Sima del Elefante, en Atapuerca?","1.200.000 años",["12.000 años","120.000 años","800.000 años"],"Unos 1.200.000 años."],
+  [5,"Los restos hallados en Orce tienen aproximadamente…","1,4 millones de años",["14.000 años","140.000 años","4 millones de años"],"Los restos de Orce: unos 1,4 millones de años."],
+  [5,"¿Cuándo empieza el Neolítico en España?","Hace unos 7.000 años",["Hace unos 10.000 años","Hace unos 4.000 años","Hace unos 500.000 años"],"En España llega más tarde: hace unos 7.000 años.",1],
+  [5,"¿Cuándo empieza la edad de los metales en España?","Hace unos 4.000 años",["Hace unos 7.000 años","Hace unos 10.000 años","Hace unos 40.000 años"],"En España: hace unos 4.000 años.",1],
+  [5,"«Arte rupestre» significa…","arte en las rocas",["arte con metales","arte hecho con agua","arte de los reyes"],"Rupestre viene de roca: pinturas y grabados en cuevas y rocas.",1],
+  [5,"¿Dónde están las cuevas de Altamira?","En Cantabria",["En Andalucía","En Valencia","En Cataluña"],"Altamira está en Cantabria.",1],
+  [5,"¿En qué país están las cuevas de Lascaux?","En Francia",["En España","En Italia","En Alemania"],"Lascaux está en Francia.",1],
+  [5,"¿Cómo es la pintura levantina?","Escenas de caza, danza o recolección al aire libre, con figuras humanas esquemáticas",["Animales aislados muy realistas en lo profundo de las cuevas","Esculturas de metal","Dibujos hechos con ordenador"],"Es monocroma y se pintaba en abrigos al aire libre.",1],
+  [5,"¿Qué son los megalitos?","Construcciones con enormes bloques de piedra, como menhires y dólmenes",["Herramientas de bronce","Pinturas de las cuevas","Poblados amurallados"],"Megalitismo: menhires, dólmenes y crómlech.",1],
+  [5,"¿Cómo es el arte rupestre de Altamira y Lascaux?","Animales aislados, muy realistas y de varios colores",["Escenas de danza en un solo color","Figuras humanas esquemáticas","Dólmenes y menhires"],"Es arte del Paleolítico: animales realistas y policromos.",1]
+];
+
+const GOOD = ["¡Bien hecho!", "¡Cerebro de sílex!", "¡Eso es!", "¡Qué memoria!", "¡Directo a la diana!"];
+const BAD = ["Casi…", "No pasa nada, así se aprende.", "Ánimo, a la próxima.", "Mira la respuesta y recuérdala."];
+
+const $ = (s) => document.querySelector(s);
+const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const mmss = (ms) => { const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); };
+
+/* ---------- Sonido retro (Web Audio, todo generado) ---------- */
+const SND = {
+  ctx: null, master: null, music: true, sfx: true, timer: null, step: 0, next: 0, noise: null,
+  load() { try { const m = localStorage.getItem("cp-music"), s = localStorage.getItem("cp-sfx"); if (m !== null) this.music = m === "1"; if (s !== null) this.sfx = s === "1"; } catch (e) {} },
+  save() { try { localStorage.setItem("cp-music", this.music ? "1" : "0"); localStorage.setItem("cp-sfx", this.sfx ? "1" : "0"); } catch (e) {} },
+  ensure() {
+    if (!this.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return false;
+      this.ctx = new AC(); this.master = this.ctx.createGain(); this.master.gain.value = 1; this.master.connect(this.ctx.destination);
+      const len = this.ctx.sampleRate * 0.1, buf = this.ctx.createBuffer(1, len, this.ctx.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+      this.noise = buf;
+    }
+    if (this.ctx.state === "suspended") this.ctx.resume();
+    return true;
+  },
+  hz(m) { return 440 * Math.pow(2, (m - 69) / 12); },
+  tone(f, t, dur, type, vol, f2) {
+    const c = this.ctx, o = c.createOscillator(), g = c.createGain();
+    o.type = type || "square"; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(this.master); o.start(t); o.stop(t + dur + 0.02);
+  },
+  hat(t) {
+    const c = this.ctx, s = c.createBufferSource(), g = c.createGain(), hp = c.createBiquadFilter();
+    s.buffer = this.noise; hp.type = "highpass"; hp.frequency.value = 6000;
+    g.gain.setValueAtTime(0.025, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+    s.connect(hp); hp.connect(g); g.connect(this.master); s.start(t); s.stop(t + 0.06);
+  },
+  // 32 pasos de corchea: acordes C, F, G, C | Am, F, G, G
+  MEL: [72,null,76,79,81,null,79,76, 77,null,81,84,81,null,77,76, 74,null,77,81,79,null,76,74, 72,null,76,79,84,null,null,null,
+        81,null,84,81,79,null,76,72, 77,76,77,81,84,null,81,77, 79,null,83,79,74,null,79,83, 84,null,79,76,72,null,null,null],
+  BASS: [48,null,48,null,48,null,55,null, 53,null,53,null,53,null,60,null, 55,null,55,null,55,null,62,null, 48,null,48,null,55,null,48,null,
+         45,null,45,null,45,null,52,null, 53,null,53,null,53,null,60,null, 55,null,55,null,55,null,62,null, 55,null,55,null,55,null,59,null],
+  startMusic() {
+    if (!this.music || this.timer || !this.ensure()) return;
+    this.next = this.ctx.currentTime + 0.1;
+    this.timer = setInterval(() => {
+      while (this.next < this.ctx.currentTime + 0.25) {
+        const i = this.step % this.MEL.length, t = this.next;
+        if (this.MEL[i]) this.tone(this.hz(this.MEL[i]), t, 0.17, "square", 0.028);
+        if (this.BASS[i]) this.tone(this.hz(this.BASS[i]), t, 0.3, "triangle", 0.07);
+        if (i % 2 === 1) this.hat(t);
+        this.step++; this.next += 0.19;
+      }
+    }, 50);
+  },
+  stopMusic() { clearInterval(this.timer); this.timer = null; },
+  play(notes, gap, type, vol) {
+    if (!this.sfx || !this.ensure()) return;
+    const t0 = this.ctx.currentTime + 0.01;
+    notes.forEach((n, i) => this.tone(this.hz(n), t0 + i * gap, gap * 1.6, type || "square", vol || 0.06));
+  },
+  tick() { if (!this.sfx || !this.ensure()) return; this.tone(900, this.ctx.currentTime, 0.04, "square", 0.04); },
+  blip() { this.play([84], 0.06, "square", 0.05); },
+  right() { this.play([72, 76, 79, 84], 0.09); },
+  wrong() { if (!this.sfx || !this.ensure()) return; this.tone(220, this.ctx.currentTime + 0.01, 0.35, "sawtooth", 0.06, 90); },
+  beep() { this.play([88], 0.08, "square", 0.04); },
+  win() { this.play([72, 72, 72, 76, 79, 76, 79, 84, 88, 91, 96], 0.11); },
+  wild() { this.play([67, 71, 74, 79, 83, 86], 0.07); }
+};
+SND.load();
+function syncTogs() {
+  $("#bgm").setAttribute("aria-pressed", SND.music); $("#snd").setAttribute("aria-pressed", SND.sfx);
+}
+$("#bgm").addEventListener("click", () => { SND.music = !SND.music; SND.save(); syncTogs(); if (SND.music) { if (!$("#game").hidden) SND.startMusic(); } else SND.stopMusic(); });
+$("#snd").addEventListener("click", () => { SND.sfx = !SND.sfx; SND.save(); syncTogs(); if (SND.sfx) SND.blip(); });
+syncTogs();
+
+/* ---------- Estado ---------- */
+let nPlayers = 2, limit = 30, players = [], cur = 0, spinning = false, rot = 0, q = null, answered = false;
+let gameStart = 0, clockInt = null, missed = [];
+const names = ["", "", "", ""], avs = [0, 1, 2, 3];
+const pools = CATS.map(() => []);
+const drawQ = (cat) => {
+  if (!pools[cat].length) pools[cat] = shuffle(QS.map((x, i) => i).filter((i) => QS[i][0] === cat));
+  return QS[pools[cat].pop()];
+};
+
+/* ---------- Preparación ---------- */
+function renderSetup() {
+  $("#count").innerHTML = [1, 2, 3, 4].map((n) => `<button type="button" data-n="${n}" aria-pressed="${n === nPlayers}">${n === 1 ? "1 jugador" : n + " jugadores"}</button>`).join("");
+  $("#limit").innerHTML = [[0, "Sin tiempo"], [15, "15 s"], [30, "30 s"], [45, "45 s"]].map(([v, t]) => `<button type="button" data-l="${v}" aria-pressed="${v === limit}">${t}</button>`).join("");
+  $("#pset").innerHTML = Array.from({ length: nPlayers }, (_, i) => `
+    <div class="pbox">
+      <label for="p${i}">Nombre ${i + 1}<input id="p${i}" maxlength="14" value="${esc(names[i])}" placeholder="Jugador ${i + 1}" autocomplete="off"></label>
+      <div class="avs" role="group" aria-label="Personaje de ${i + 1}">${AVATARS.map((a, k) => `<button type="button" data-p="${i}" data-a="${k}" title="${a[1]}" aria-label="${a[1]}" aria-pressed="${avs[i] === k}">${a[0]}</button>`).join("")}</div>
+    </div>`).join("");
+  $("#catlist").innerHTML = CATS.map((c) => `<li><span class="dot" style="background:${c.color}">${c.emoji}</span>${esc(c.name)}</li>`).join("");
+}
+function keepNames() { document.querySelectorAll("#pset input").forEach((inp, i) => (names[i] = inp.value)); }
+$("#count").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; keepNames(); nPlayers = +b.dataset.n; SND.ensure(); SND.blip(); renderSetup(); });
+$("#limit").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; keepNames(); limit = +b.dataset.l; SND.ensure(); SND.blip(); renderSetup(); });
+$("#pset").addEventListener("click", (e) => { const b = e.target.closest("button[data-a]"); if (!b) return; keepNames(); avs[+b.dataset.p] = +b.dataset.a; SND.ensure(); SND.blip(); renderSetup(); });
+$("#go").addEventListener("click", () => {
+  keepNames();
+  players = Array.from({ length: nPlayers }, (_, i) => ({
+    name: names[i].trim() || "Jugador " + (i + 1), av: AVATARS[avs[i]][0], has: CATS.map(() => false),
+    ok: 0, tot: 0, streak: 0, best: 0, fifty: false
+  }));
+  cur = 0; missed = []; rot = 0;
+  $("#setup").hidden = true; $("#game").hidden = false;
+  SND.ensure(); SND.startMusic(); SND.wild();
+  gameStart = Date.now(); clearInterval(clockInt);
+  clockInt = setInterval(() => { $("#clock").textContent = "⏱ " + mmss(Date.now() - gameStart); }, 500);
+  $("#clock").textContent = "⏱ 00:00";
+  startTurn();
+});
+
+/* ---------- Jugadores ---------- */
+function pie(has, size) {
+  const r = 24, c = 28; let out = "";
+  CATS.forEach((cat, i) => {
+    const a0 = (i * 60) * Math.PI / 180, a1 = ((i + 1) * 60) * Math.PI / 180;
+    const p = (a) => [c + r * Math.sin(a), c - r * Math.cos(a)];
+    const [x0, y0] = p(a0), [x1, y1] = p(a1);
+    out += `<path d="M${c} ${c}L${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}Z" fill="${has[i] ? cat.color : "#3A2658"}" stroke="#241638" stroke-width="2"/>`;
+  });
+  return `<svg width="${size}" height="${size}" viewBox="0 0 56 56" aria-hidden="true">${out}<circle cx="28" cy="28" r="6" fill="#241638"/></svg>`;
+}
+function renderPlayers() {
+  $("#players").innerHTML = players.map((p, i) => {
+    const n = p.has.filter(Boolean).length;
+    return `<div class="pcard${i === cur ? " on" : ""}"><span class="av" aria-hidden="true">${p.av}</span><div class="who"><span class="nm">${esc(p.name)}</span><span class="sub">${n} de 6${p.streak >= 2 ? " · racha " + p.streak : ""}${i === cur ? " · su turno" : ""}</span></div>${pie(p.has, 46)}</div>`;
+  }).join("");
+}
+
+/* ---------- Ruleta ---------- */
+const SEG = 360 / 7;
+function wheelSVG() {
+  const cx = 200, cy = 200, r = 190; let s = "";
+  const pt = (a) => [cx + r * Math.sin(a * Math.PI / 180), cy - r * Math.cos(a * Math.PI / 180)];
+  for (let i = 0; i < 7; i++) {
+    const a0 = i * SEG, a1 = (i + 1) * SEG, mid = a0 + SEG / 2;
+    const [x0, y0] = pt(a0), [x1, y1] = pt(a1);
+    const fill = i < 6 ? CATS[i].color : "#FFF4DC";
+    const label = i < 6 ? CATS[i].short : "Comodín", em = i < 6 ? CATS[i].emoji : "🎁";
+    s += `<path d="M${cx} ${cy}L${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}Z" fill="${fill}" stroke="#1B1230" stroke-width="4"/>`;
+    s += `<g transform="translate(${cx} ${cy}) rotate(${(mid - 90).toFixed(2)})"><text x="56" y="9" font-size="26">${em}</text><text x="90" y="7" font-family="Fredoka, Arial, sans-serif" font-weight="600" font-size="17" fill="#1B1230">${label}</text></g>`;
+  }
+  return `<svg viewBox="0 0 400 400" role="group" aria-label="Ruleta con los 6 colores y el comodín">
+    <g id="wheelG" style="transform:rotate(${rot}deg)">${s}</g>
+    <g id="hub" role="button" tabindex="0" aria-label="Girar la ruleta">
+      <circle class="ring" cx="200" cy="200" r="50"/>
+      <circle cx="200" cy="200" r="50" fill="#1B1230" stroke="#FFD23F" stroke-width="6"/>
+      <text x="200" y="208" text-anchor="middle" font-family="Fredoka, Arial, sans-serif" font-weight="600" font-size="22" fill="#FFF4DC">GIRAR</text>
+    </g>
+    <path d="M200 38 L180 -2 L220 -2 Z" fill="#FFD23F" stroke="#1B1230" stroke-width="5" stroke-linejoin="round" transform="translate(0 18)"/>
+  </svg>`;
+}
+function startTurn() {
+  clearInterval(tInt);
+  q = null; answered = false; spinning = false;
+  renderPlayers();
+  const p = players[cur];
+  $("#stage").innerHTML = `
+    <div class="turn">${p.av} Turno de ${esc(p.name)}</div>
+    <div class="wheelbox">${wheelSVG()}</div>
+    <p class="hint" id="hint">Toca el centro de la ruleta para girar</p>
+    <div class="banner" id="banner" aria-live="polite">&nbsp;</div>`;
+  const hub = $("#hub");
+  hub.addEventListener("click", spin);
+  hub.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); spin(); } });
+}
+function spin() {
+  if (spinning) return;
+  spinning = true; $("#hub").classList.add("off"); $("#hint").textContent = "";
+  SND.ensure();
+  const p = players[cur];
+  const missing = CATS.map((_, i) => i).filter((i) => !p.has[i]);
+  const idx = pick([...missing, 6]);
+  const center = (idx + 0.5) * SEG;
+  const jitter = (Math.random() - 0.5) * SEG * 0.6;
+  const base = ((-center - rot) % 360 + 360) % 360;
+  rot = rot + 360 * 5 + base + jitter;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const g = $("#wheelG");
+  requestAnimationFrame(() => { g.style.transform = `rotate(${rot}deg)`; });
+  if (!reduce) { let t = 0, d = 45; while (t < 3400) { setTimeout(() => SND.tick(), t); t += d; d *= 1.12; } }
+  setTimeout(() => landed(idx), reduce ? 500 : 3800);
+}
+function landed(idx) {
+  if (idx === 6) {
+    SND.wild();
+    $("#banner").textContent = "🎁 ¡Comodín! Elige un color";
+    const p = players[cur];
+    setTimeout(() => {
+      $("#stage").innerHTML = `<div class="turn">🎁 ¡Comodín! ${esc(p.name)}, elige color</div>
+        <div class="wild">${CATS.map((c, i) => p.has[i] ? "" : `<button type="button" data-c="${i}"><span class="dot" style="background:${c.color}">${c.emoji}</span>${esc(c.name)}</button>`).join("")}</div>`;
+      $("#stage .wild").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { SND.blip(); showQuestion(+b.dataset.c); } });
+    }, 800);
+  } else {
+    $("#banner").textContent = CATS[idx].emoji + " Toca: " + CATS[idx].name;
+    SND.blip();
+    setTimeout(() => showQuestion(idx), 1000);
+  }
+}
+
+/* ---------- Pregunta ---------- */
+let tInt = null, tLeft = 0, lastBeep = -1;
+function showQuestion(cat) {
+  const item = drawQ(cat);
+  const opts = shuffle([item[2], ...item[3]].map((t, i) => ({ t, ok: i === 0 })));
+  q = { cat, item, opts }; answered = false;
+  const c = CATS[cat], p = players[cur];
+  $("#stage").innerHTML = `
+    <div class="qcard" style="--cc:${c.color}">
+      <div class="qhead">
+        <span class="chip"><i aria-hidden="true">${c.emoji}</i>${esc(c.name)}</span>
+        ${item[5] ? `<span class="sheet">Hoja de repaso</span>` : ""}
+      </div>
+      ${limit ? `<div class="timer" id="timer"><div class="tbar"><i id="tfill"></i></div><span class="tnum" id="tnum">${limit} s</span></div>` : ""}
+      <div class="qtext">${esc(item[1])}</div>
+      <div class="opts" id="opts">${opts.map((o, i) => `<button type="button" class="opt" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span class="t">${esc(o.t)}</span></button>`).join("")}</div>
+      <div class="tools2" id="tools2"><button type="button" class="fifty" id="fifty" ${p.fifty ? "disabled" : ""}>50/50${p.fifty ? " (usada)" : ""}</button></div>
+      <div id="after"></div>
+    </div>`;
+  $("#opts").addEventListener("click", (e) => { const b = e.target.closest(".opt"); if (b) answer(+b.dataset.i); });
+  $("#fifty").addEventListener("click", useFifty);
+  startTimer();
+}
+function useFifty() {
+  if (answered || players[cur].fifty) return;
+  players[cur].fifty = true; SND.blip();
+  const wrong = shuffle(q.opts.map((o, i) => i).filter((i) => !q.opts[i].ok)).slice(0, 2);
+  wrong.forEach((i) => { const b = document.querySelector(`#opts .opt[data-i="${i}"]`); b.disabled = true; b.classList.add("gone"); });
+  const f = $("#fifty"); f.disabled = true; f.textContent = "50/50 (usada)";
+}
+function startTimer() {
+  clearInterval(tInt); if (!limit) return;
+  tLeft = limit; lastBeep = -1; updTimer();
+  tInt = setInterval(() => {
+    tLeft -= 0.1; updTimer();
+    if (tLeft <= 0) { clearInterval(tInt); answer(-1); }
+  }, 100);
+}
+function updTimer() {
+  const f = $("#tfill"); if (!f) return;
+  f.style.width = Math.max(0, tLeft / limit * 100) + "%";
+  const s = Math.ceil(Math.max(0, tLeft));
+  $("#tnum").textContent = s + " s";
+  const warn = tLeft <= 5;
+  $("#timer").classList.toggle("warn", warn);
+  if (warn && s !== lastBeep && s > 0) { lastBeep = s; SND.beep(); }
+}
+function answer(i) {
+  if (answered) return; answered = true; clearInterval(tInt);
+  const p = players[cur], timeout = i < 0, good = !timeout && q.opts[i].ok;
+  p.tot++;
+  let gained = false;
+  if (good) { p.ok++; p.streak++; p.best = Math.max(p.best, p.streak); if (!p.has[q.cat]) { p.has[q.cat] = true; gained = true; } }
+  else { p.streak = 0; missed.push({ q: q.item[1], a: q.item[2], who: p.name }); }
+  document.querySelectorAll("#opts .opt").forEach((b, k) => {
+    b.disabled = true; b.classList.remove("gone");
+    const tag = document.createElement("span"); tag.className = "tag";
+    if (q.opts[k].ok) { b.classList.add("right"); tag.textContent = k === i ? "✓ Correcta, tu respuesta" : "✓ Correcta"; b.querySelector(".t").appendChild(tag); }
+    else if (k === i) { b.classList.add("wrong"); tag.textContent = "✗ Tu respuesta"; b.querySelector(".t").appendChild(tag); }
+  });
+  $("#fifty").disabled = true;
+  const won = p.has.every(Boolean), solo = players.length === 1;
+  let msg, btn;
+  if (good) {
+    SND.right();
+    msg = `${p.av} ${pick(GOOD)}${gained ? " Ganas el quesito de " + CATS[q.cat].short + "." : ""}${p.streak >= 3 ? " Racha de " + p.streak + "." : ""}`;
+    btn = won ? "¡Ver resultado!" : "Girar otra vez";
+  } else {
+    SND.wrong();
+    msg = `${p.av} ${timeout ? "¡Se acabó el tiempo!" : pick(BAD)}`;
+    btn = solo ? "Girar otra vez" : `Turno de ${players[(cur + 1) % players.length].name}`;
+  }
+  $("#after").innerHTML = `<div class="explain"><b>${esc(msg)}</b>${esc(q.item[4])}</div><div class="actions" style="margin-top:14px"><button class="btn" id="next">${esc(btn)}</button></div>`;
+  renderPlayers();
+  $("#next").addEventListener("click", () => {
+    if (good && won) return victory();
+    if (!good) cur = (cur + 1) % players.length;
+    startTurn();
+  });
+  $("#next").focus();
+}
+document.addEventListener("keydown", (e) => {
+  if (!q || answered) return;
+  const k = "1234".indexOf(e.key);
+  if (k >= 0 && k < q.opts.length && !q.opts[k].gone && !document.querySelector(`#opts .opt[data-i="${k}"]`).disabled) answer(k);
+});
+
+/* ---------- Final ---------- */
+function victory() {
+  clearInterval(clockInt); clearInterval(tInt);
+  const total = mmss(Date.now() - gameStart), p = players[cur];
+  const seen = new Set(), list = missed.filter((m) => !seen.has(m.q) && seen.add(m.q));
+  $("#stage").innerHTML = `
+    <div class="panel win">
+      <h2>${p.av} ¡${esc(p.name)} ha reunido los 6 colores!</h2>
+      <div>${pie(p.has, 120)}</div>
+      <p class="muted" style="margin:0">Tiempo de partida: <b style="color:var(--cream)">${total}</b></p>
+      <div class="stats">${players.map((x) => `<div><b>${x.av} ${esc(x.name)}</b>${x.ok} aciertos de ${x.tot} · mejor racha ${x.best}</div>`).join("")}</div>
+      ${list.length ? `<div class="review"><h3>Para repasar</h3><ul>${list.map((m) => `<li>${esc(m.q)}<br><span>${esc(m.a)}</span></li>`).join("")}</ul></div>` : `<p class="muted" style="margin:0">No se falló ninguna pregunta. ¡Partida perfecta!</p>`}
+      <button class="btn big" id="again">Jugar otra vez</button>
+    </div>`;
+  renderPlayers();
+  $("#again").addEventListener("click", () => { $("#game").hidden = true; $("#setup").hidden = false; renderSetup(); });
+  SND.win(); confetti();
+}
+function confetti() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = $("#fx"); cv.hidden = false;
+  const ctx = cv.getContext("2d"), W = (cv.width = innerWidth), H = (cv.height = innerHeight);
+  const cols = CATS.map((c) => c.color);
+  const bits = Array.from({ length: 140 }, () => ({ x: Math.random() * W, y: -20 - Math.random() * H * 0.5, s: 6 + Math.random() * 8, v: 2 + Math.random() * 3, r: Math.random() * 6, c: cols[Math.floor(Math.random() * 6)] }));
+  let t = 0;
+  (function f() {
+    ctx.clearRect(0, 0, W, H);
+    bits.forEach((b) => { b.y += b.v; b.x += Math.sin((b.y + b.r) / 30); ctx.fillStyle = b.c; ctx.fillRect(b.x, b.y, b.s, b.s * 0.6); });
+    if (++t < 260) requestAnimationFrame(f); else { ctx.clearRect(0, 0, W, H); cv.hidden = true; }
+  })();
+}
+
+renderSetup();
+</script>

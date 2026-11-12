@@ -1,0 +1,1744 @@
+# Historia · Unidad 8 · La prehistoria
+# Preguntas 001–077: migradas de reference/carrera.html (verificadas con el libro y la hoja de repaso).
+# Preguntas 078–085: nuevas, de otros tipos (ordenar, numérica, verdadero/falso); revisadas con el libro.
+# Esquema: src/data/schema.ts · Cómo añadir preguntas: README.md
+
+- id: hist-u08-001
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: ¿Qué es la Historia?
+    va: Què és la Història?
+  correcta:
+    es: La ciencia que investiga cómo vivían las personas en otras épocas
+    va: La ciència que investiga com vivien les persones en altres èpoques
+  incorrectas:
+    - es: La ciencia que estudia las estrellas y los planetas
+      va: La ciència que estudia les estreles i els planetes
+    - es: La ciencia que estudia las rocas y los minerales
+      va: La ciència que estudia les roques i els minerals
+    - es: El conjunto de cuentos y leyendas de un pueblo
+      va: El conjunt de contes i llegendes d'un poble
+  explicacion:
+    es: La Historia es la ciencia que investiga cómo vivían las personas en otras épocas.
+    va: La Història és la ciència que investiga com vivien les persones en altres èpoques.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-002
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Las fuentes de la historia son…
+    va: Les fonts de la història són…
+  correcta:
+    es: los restos y testimonios que dejaron nuestros antepasados
+    va: les restes i els testimonis que van deixar els nostres avantpassats
+  incorrectas:
+    - es: los libros que se escriben hoy en las escuelas
+      va: els llibres que s'escriuen hui a les escoles
+    - es: los mapas de carreteras actuales
+      va: els mapes de carreteres actuals
+    - es: las películas de ciencia ficción
+      va: les pel·lícules de ciència-ficció
+  explicacion:
+    es: Son los restos y testimonios que dejaron nuestros antepasados.
+    va: Són les restes i els testimonis que van deixar els nostres avantpassats.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-003
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Una fuente primaria la elaboró alguien que…
+    va: Una font primària la va elaborar algú que…
+  correcta:
+    es: participó en los hechos o los observó directamente
+    va: va participar en els fets o els va observar directament
+  incorrectas:
+    - es: vivió siglos después de los hechos
+      va: va viure segles després dels fets
+    - es: solo oyó rumores de otra persona
+      va: només va sentir rumors d'una altra persona
+    - es: escribió un libro de texto actual
+      va: va escriure un llibre de text actual
+  explicacion:
+    es: Las fuentes primarias las hacen personas que participaron en los hechos o los observaron directamente.
+    va: Les fonts primàries les fan persones que van participar en els fets o els van observar directament.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-004
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Las fuentes secundarias son…
+    va: Les fonts secundàries són…
+  correcta:
+    es: posteriores a los hechos y suelen ser obra de historiadores
+    va: posteriors als fets i solen ser obra d'historiadors
+  incorrectas:
+    - es: las más antiguas de todas
+      va: les més antigues de totes
+    - es: las que se escriben mientras ocurren los hechos
+      va: les que s'escriuen mentre ocorren els fets
+    - es: solo las imágenes y fotografías
+      va: només les imatges i fotografies
+  explicacion:
+    es: Son fuentes posteriores a los hechos de los que informan.
+    va: Són fonts posteriors als fets dels quals informen.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-005
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Un discurso o una entrevista son fuentes…
+    va: Un discurs o una entrevista són fonts…
+  correcta:
+    es: orales
+    va: orals
+  incorrectas:
+    - es: escritas
+      va: escrites
+    - es: iconográficas
+      va: iconogràfiques
+    - es: materiales
+      va: materials
+  explicacion:
+    es: "Las fuentes orales son informaciones narradas o contadas: discursos, entrevistas…"
+    va: "Les fonts orals són informacions narrades o contades: discursos, entrevistes…"
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-006
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Un diario o un periódico son fuentes…
+    va: Un diari o un periòdic són fonts…
+  correcta:
+    es: escritas
+    va: escrites
+  incorrectas:
+    - es: orales
+      va: orals
+    - es: iconográficas
+      va: iconogràfiques
+    - es: materiales
+      va: materials
+  explicacion:
+    es: "Las fuentes escritas son textos sobre el pasado: diarios, prensa…"
+    va: "Les fonts escrites són textos sobre el passat: diaris, premsa…"
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-007
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Un mapa o una fotografía son fuentes…
+    va: Un mapa o una fotografia són fonts…
+  correcta:
+    es: iconográficas
+    va: iconogràfiques
+  incorrectas:
+    - es: orales
+      va: orals
+    - es: escritas
+      va: escrites
+    - es: materiales
+      va: materials
+  explicacion:
+    es: "Las fuentes iconográficas son imágenes referidas al pasado: mapas, fotografías…"
+    va: "Les fonts iconogràfiques són imatges referides al passat: mapes, fotografies…"
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-008
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Una moneda o una escultura son fuentes…
+    va: Una moneda o una escultura són fonts…
+  correcta:
+    es: materiales
+    va: materials
+  incorrectas:
+    - es: orales
+      va: orals
+    - es: escritas
+      va: escrites
+    - es: iconográficas
+      va: iconogràfiques
+  explicacion:
+    es: "Las fuentes materiales son construcciones y objetos del pasado: monedas, esculturas…"
+    va: "Les fonts materials són construccions i objectes del passat: monedes, escultures…"
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-009
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: Un libro de texto actual sobre la Edad Media es una fuente…
+    va: Un llibre de text actual sobre l'Edat Mitjana és una font…
+  correcta:
+    es: secundaria
+    va: secundària
+  incorrectas:
+    - es: primaria
+      va: primària
+    - es: oral
+      va: oral
+    - es: material
+      va: material
+  explicacion:
+    es: Lo escribe alguien que no vivió los hechos, así que es secundaria.
+    va: L'escriu algú que no va viure els fets, així que és secundària.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-010
+  tema: fuentes
+  tipo: multiple
+  pregunta:
+    es: El diario que escribió un soldado durante una batalla es una fuente…
+    va: El diari que va escriure un soldat durant una batalla és una font…
+  correcta:
+    es: primaria y escrita
+    va: primària i escrita
+  incorrectas:
+    - es: secundaria y escrita
+      va: secundària i escrita
+    - es: primaria y material
+      va: primària i material
+    - es: secundaria e iconográfica
+      va: secundària i iconogràfica
+  explicacion:
+    es: Lo escribió quien vivió los hechos (primaria) y es un texto (escrita).
+    va: El va escriure qui va viure els fets (primària) i és un text (escrita).
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-011
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Cuántos años tiene un siglo?
+    va: Quants anys té un segle?
+  correcta:
+    es: "100"
+    va: "100"
+  incorrectas:
+    - es: "10"
+      va: "10"
+    - es: "50"
+      va: "50"
+    - es: "1.000"
+      va: "1.000"
+  explicacion:
+    es: Un siglo son 100 años.
+    va: Un segle són 100 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-012
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Cuántos años tiene un milenio?
+    va: Quants anys té un mil·lenni?
+  correcta:
+    es: "1.000"
+    va: "1.000"
+  incorrectas:
+    - es: "100"
+      va: "100"
+    - es: "500"
+      va: "500"
+    - es: "10.000"
+      va: "10.000"
+  explicacion:
+    es: Un milenio son 1.000 años.
+    va: Un mil·lenni són 1.000 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-013
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1936?
+    va: A quin segle pertany l'any 1936?
+  correcta:
+    es: Siglo XX
+    va: Segle XX
+  incorrectas:
+    - es: Siglo XIX
+      va: Segle XIX
+    - es: Siglo XXI
+      va: Segle XXI
+    - es: Siglo XVIII
+      va: Segle XVIII
+  explicacion:
+    es: "Truco: 19 + 1 = 20, siglo XX."
+    va: "Truc: 19 + 1 = 20, segle XX."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-014
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1492?
+    va: A quin segle pertany l'any 1492?
+  correcta:
+    es: Siglo XV
+    va: Segle XV
+  incorrectas:
+    - es: Siglo XIV
+      va: Segle XIV
+    - es: Siglo XVI
+      va: Segle XVI
+    - es: Siglo XIII
+      va: Segle XIII
+  explicacion:
+    es: 14 + 1 = 15, siglo XV.
+    va: 14 + 1 = 15, segle XV.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-015
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1600?
+    va: A quin segle pertany l'any 1600?
+  correcta:
+    es: Siglo XVI
+    va: Segle XVI
+  incorrectas:
+    - es: Siglo XVII
+      va: Segle XVII
+    - es: Siglo XV
+      va: Segle XV
+    - es: Siglo XIV
+      va: Segle XIV
+  explicacion:
+    es: "Si el año acaba en 00 no se suma 1: 1600 es del siglo XVI."
+    va: "Si l'any acaba en 00 no se suma 1: 1600 és del segle XVI."
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-016
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 711?
+    va: A quin segle pertany l'any 711?
+  correcta:
+    es: Siglo VIII
+    va: Segle VIII
+  incorrectas:
+    - es: Siglo VII
+      va: Segle VII
+    - es: Siglo IX
+      va: Segle IX
+    - es: Siglo VI
+      va: Segle VI
+  explicacion:
+    es: 7 + 1 = 8, siglo VIII.
+    va: 7 + 1 = 8, segle VIII.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-017
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 44 aC?
+    va: A quin segle pertany l'any 44 aC?
+  correcta:
+    es: Siglo I aC
+    va: Segle I aC
+  incorrectas:
+    - es: Siglo II aC
+      va: Segle II aC
+    - es: Siglo I dC
+      va: Segle I dC
+    - es: Siglo IV aC
+      va: Segle IV aC
+  explicacion:
+    es: "Con años aC se hace igual: 0 + 1 = 1, siglo I aC."
+    va: "Amb anys aC es fa igual: 0 + 1 = 1, segle I aC."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-018
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 375 aC?
+    va: A quin segle pertany l'any 375 aC?
+  correcta:
+    es: Siglo IV aC
+    va: Segle IV aC
+  incorrectas:
+    - es: Siglo III aC
+      va: Segle III aC
+    - es: Siglo V aC
+      va: Segle V aC
+    - es: Siglo IV dC
+      va: Segle IV dC
+  explicacion:
+    es: 3 + 1 = 4, siglo IV aC.
+    va: 3 + 1 = 4, segle IV aC.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-019
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 476?
+    va: A quin segle pertany l'any 476?
+  correcta:
+    es: Siglo V
+    va: Segle V
+  incorrectas:
+    - es: Siglo IV
+      va: Segle IV
+    - es: Siglo VI
+      va: Segle VI
+    - es: Siglo III
+      va: Segle III
+  explicacion:
+    es: 4 + 1 = 5, siglo V.
+    va: 4 + 1 = 5, segle V.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-020
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1808?
+    va: A quin segle pertany l'any 1808?
+  correcta:
+    es: Siglo XIX
+    va: Segle XIX
+  incorrectas:
+    - es: Siglo XVIII
+      va: Segle XVIII
+    - es: Siglo XX
+      va: Segle XX
+    - es: Siglo XVII
+      va: Segle XVII
+  explicacion:
+    es: 18 + 1 = 19, siglo XIX.
+    va: 18 + 1 = 19, segle XIX.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-021
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1789?
+    va: A quin segle pertany l'any 1789?
+  correcta:
+    es: Siglo XVIII
+    va: Segle XVIII
+  incorrectas:
+    - es: Siglo XVII
+      va: Segle XVII
+    - es: Siglo XIX
+      va: Segle XIX
+    - es: Siglo XVI
+      va: Segle XVI
+  explicacion:
+    es: 17 + 1 = 18, siglo XVIII.
+    va: 17 + 1 = 18, segle XVIII.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-022
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿A qué siglo pertenece el año 1238?
+    va: A quin segle pertany l'any 1238?
+  correcta:
+    es: Siglo XIII
+    va: Segle XIII
+  incorrectas:
+    - es: Siglo XII
+      va: Segle XII
+    - es: Siglo XIV
+      va: Segle XIV
+    - es: Siglo XI
+      va: Segle XI
+  explicacion:
+    es: 12 + 1 = 13, siglo XIII.
+    va: 12 + 1 = 13, segle XIII.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-023
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Entre qué años va el siglo I?
+    va: Entre quins anys va el segle I?
+  correcta:
+    es: Del año 1 al 100
+    va: De l'any 1 al 100
+  incorrectas:
+    - es: Del año 0 al 99
+      va: De l'any 0 al 99
+    - es: Del año 100 al 200
+      va: De l'any 100 al 200
+    - es: Del año 1 al 10
+      va: De l'any 1 al 10
+  explicacion:
+    es: El siglo I va del año 1 al 100; el II, del 101 al 200…
+    va: El segle I va de l'any 1 al 100; el II, del 101 al 200…
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-024
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Entre qué años va el siglo XXI?
+    va: Entre quins anys va el segle XXI?
+  correcta:
+    es: 2001 – 2100
+    va: 2001 – 2100
+  incorrectas:
+    - es: 1901 – 2000
+      va: 1901 – 2000
+    - es: 2000 – 2099
+      va: 2000 – 2099
+    - es: 2101 – 2200
+      va: 2101 – 2200
+  explicacion:
+    es: El siglo XXI va del año 2001 al 2100.
+    va: El segle XXI va de l'any 2001 al 2100.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-025
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Qué separa la prehistoria de la historia?
+    va: Què separa la prehistòria de la història?
+  correcta:
+    es: La aparición de la escritura
+    va: L'aparició de l'escriptura
+  incorrectas:
+    - es: El descubrimiento del fuego
+      va: El descobriment del foc
+    - es: La llegada de la agricultura
+      va: L'arribada de l'agricultura
+    - es: El invento de la rueda
+      va: La invenció de la roda
+  explicacion:
+    es: La escritura aparece hace unos 5.000 años.
+    va: L'escriptura apareix fa uns 5.000 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-026
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Cuál es el orden correcto de las edades de la historia?
+    va: Quin és l'ordre correcte de les edats de la història?
+  correcta:
+    es: Prehistoria, Antigua, Media, Moderna, Contemporánea
+    va: Prehistòria, Antiga, Mitjana, Moderna, Contemporània
+  incorrectas:
+    - es: Antigua, Prehistoria, Media, Moderna, Contemporánea
+      va: Antiga, Prehistòria, Mitjana, Moderna, Contemporània
+    - es: Prehistoria, Media, Antigua, Contemporánea, Moderna
+      va: Prehistòria, Mitjana, Antiga, Contemporània, Moderna
+    - es: Prehistoria, Antigua, Moderna, Media, Contemporánea
+      va: Prehistòria, Antiga, Moderna, Mitjana, Contemporània
+  explicacion:
+    es: Es el orden en que ocurrieron, de más antigua a más reciente.
+    va: És l'ordre en què van ocórrer, de la més antiga a la més recent.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-027
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Qué edad va desde la escritura hasta el año 476?
+    va: Quina edat va des de l'escriptura fins a l'any 476?
+  correcta:
+    es: La Edad Antigua
+    va: L'Edat Antiga
+  incorrectas:
+    - es: La Edad Media
+      va: L'Edat Mitjana
+    - es: La Edad Moderna
+      va: L'Edat Moderna
+    - es: La Edad Contemporánea
+      va: L'Edat Contemporània
+  explicacion:
+    es: "Edad Antigua: de hace unos 5.000 años hasta el año 476."
+    va: "Edat Antiga: de fa uns 5.000 anys fins a l'any 476."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-028
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Entre qué años va la Edad Media?
+    va: Entre quins anys va l'Edat Mitjana?
+  correcta:
+    es: 476 – 1492
+    va: 476 – 1492
+  incorrectas:
+    - es: 1492 – 1789
+      va: 1492 – 1789
+    - es: 1789 – hoy
+      va: 1789 – hui
+    - es: Hace 5.000 años – 476
+      va: Fa 5.000 anys – 476
+  explicacion:
+    es: "Edad Media: del año 476 al 1492."
+    va: "Edat Mitjana: de l'any 476 al 1492."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-029
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Qué edad va de 1492 a 1789?
+    va: Quina edat va de 1492 a 1789?
+  correcta:
+    es: La Edad Moderna
+    va: L'Edat Moderna
+  incorrectas:
+    - es: La Edad Media
+      va: L'Edat Mitjana
+    - es: La Edad Contemporánea
+      va: L'Edat Contemporània
+    - es: La Edad Antigua
+      va: L'Edat Antiga
+  explicacion:
+    es: "Edad Moderna: de 1492 a 1789."
+    va: "Edat Moderna: de 1492 a 1789."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-030
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Cómo se llama la edad que empieza en 1789 y llega hasta hoy?
+    va: Com s'anomena l'edat que comença en 1789 i arriba fins hui?
+  correcta:
+    es: Edad Contemporánea
+    va: Edat Contemporània
+  incorrectas:
+    - es: Edad Moderna
+      va: Edat Moderna
+    - es: Edad Media
+      va: Edat Mitjana
+    - es: Edad Antigua
+      va: Edat Antiga
+  explicacion:
+    es: "Edad Contemporánea: de 1789 hasta hoy."
+    va: "Edat Contemporània: de 1789 fins hui."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-031
+  tema: tiempo
+  tipo: multiple
+  pregunta:
+    es: ¿Cuál es la edad más larga de la historia?
+    va: Quina és l'edat més llarga de la història?
+  correcta:
+    es: La Prehistoria
+    va: La Prehistòria
+  incorrectas:
+    - es: La Edad Antigua
+      va: L'Edat Antiga
+    - es: La Edad Media
+      va: L'Edat Mitjana
+    - es: La Edad Moderna
+      va: L'Edat Moderna
+  explicacion:
+    es: La prehistoria dura desde hace unos 5 millones de años hasta hace unos 5.000.
+    va: La prehistòria dura des de fa uns 5 milions d'anys fins a fa uns 5.000.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-032
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué es el proceso de hominización?
+    va: Què és el procés d'hominització?
+  correcta:
+    es: El largo proceso evolutivo por el que nuestros antepasados adquirieron las características que nos diferencian de otros primates
+    va: El llarg procés evolutiu pel qual els nostres avantpassats van adquirir les característiques que ens diferencien d'altres primats
+  incorrectas:
+    - es: La construcción de las primeras casas
+      va: La construcció de les primeres cases
+    - es: El paso de la caza a la agricultura
+      va: El pas de la caça a l'agricultura
+    - es: El invento de la escritura
+      va: La invenció de l'escriptura
+  explicacion:
+    es: Es el largo proceso evolutivo hasta el ser humano actual.
+    va: És el llarg procés evolutiu fins a l'ésser humà actual.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-033
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué es el bipedismo?
+    va: Què és el bipedisme?
+  correcta:
+    es: Caminar sobre los dos pies sin ayuda de las manos
+    va: Caminar sobre els dos peus sense ajuda de les mans
+  incorrectas:
+    - es: Vivir en cuevas
+      va: Viure en coves
+    - es: Fabricar herramientas de piedra
+      va: Fabricar eines de pedra
+    - es: Cazar en grupo
+      va: Caçar en grup
+  explicacion:
+    es: "Bipedismo: caminar sobre los dos pies."
+    va: "Bipedisme: caminar sobre els dos peus."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-034
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: Además del bipedismo, ¿qué rasgo adquirieron nuestros antepasados?
+    va: A més del bipedisme, quin tret van adquirir els nostres avantpassats?
+  correcta:
+    es: El pulgar oponible y un cerebro más grande
+    va: El polze oposable i un cervell més gran
+  incorrectas:
+    - es: Una cola larga y garras
+      va: Una cua llarga i urpes
+    - es: Alas pequeñas
+      va: Ales xicotetes
+    - es: Un pelaje mucho más espeso
+      va: Un pelatge molt més espés
+  explicacion:
+    es: Adquirieron el pulgar oponible y un cerebro más grande y complejo.
+    va: Van adquirir el polze oposable i un cervell més gran i complex.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-035
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué ventaja dio el bipedismo?
+    va: Quin avantatge va donar el bipedisme?
+  correcta:
+    es: Ampliar el campo de visión y liberar las manos
+    va: Ampliar el camp de visió i alliberar les mans
+  incorrectas:
+    - es: Correr más rápido que un león
+      va: Córrer més ràpid que un lleó
+    - es: Dejar de necesitar comida
+      va: Deixar de necessitar menjar
+    - es: Poder vivir en el agua
+      va: Poder viure en l'aigua
+  explicacion:
+    es: Con dos pies se ve más lejos y las manos quedan libres para otras tareas.
+    va: Amb dos peus es veu més lluny i les mans queden lliures per a altres tasques.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-036
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Cuál es la especie más antigua de la lista, de hace 4,4 millones de años?
+    va: Quina és l'espècie més antiga de la llista, de fa 4,4 milions d'anys?
+  correcta:
+    es: Ardipithecus
+    va: Ardipithecus
+  incorrectas:
+    - es: Homo sapiens
+      va: Homo sapiens
+    - es: Homo erectus
+      va: Homo erectus
+    - es: Homo antecessor
+      va: Homo antecessor
+  explicacion:
+    es: "Ardipithecus: hace unos 4,4 millones de años."
+    va: "Ardipithecus: fa uns 4,4 milions d'anys."
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-037
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué especie usó el fuego y fue la primera en salir de África?
+    va: Quina espècie va usar el foc i va ser la primera a eixir d'Àfrica?
+  correcta:
+    es: Homo erectus
+    va: Homo erectus
+  incorrectas:
+    - es: Homo habilis
+      va: Homo habilis
+    - es: Homo neanderthalensis
+      va: Homo neanderthalensis
+    - es: Homo antecessor
+      va: Homo antecessor
+  explicacion:
+    es: Homo erectus, hace unos 1,5 millones de años.
+    va: Homo erectus, fa uns 1,5 milions d'anys.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-038
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué especie vivió hace unos 800.000 años y dejó fósiles en Atapuerca?
+    va: Quina espècie va viure fa uns 800.000 anys i va deixar fòssils a Atapuerca?
+  correcta:
+    es: Homo antecessor
+    va: Homo antecessor
+  incorrectas:
+    - es: Homo erectus
+      va: Homo erectus
+    - es: Homo sapiens
+      va: Homo sapiens
+    - es: Homo neanderthalensis
+      va: Homo neanderthalensis
+  explicacion:
+    es: Homo antecessor, en Atapuerca.
+    va: Homo antecessor, a Atapuerca.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-039
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué especie enterraba a sus muertos?
+    va: Quina espècie enterrava els seus morts?
+  correcta:
+    es: Homo neanderthalensis
+    va: Homo neanderthalensis
+  incorrectas:
+    - es: Homo habilis
+      va: Homo habilis
+    - es: Australopithecus
+      va: Australopithecus
+    - es: Ardipithecus
+      va: Ardipithecus
+  explicacion:
+    es: Homo neanderthalensis, hace unos 200.000 años.
+    va: Homo neanderthalensis, fa uns 200.000 anys.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-040
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué especie desarrolló el lenguaje y el arte?
+    va: Quina espècie va desenvolupar el llenguatge i l'art?
+  correcta:
+    es: Homo sapiens
+    va: Homo sapiens
+  incorrectas:
+    - es: Homo erectus
+      va: Homo erectus
+    - es: Homo antecessor
+      va: Homo antecessor
+    - es: Australopithecus
+      va: Australopithecus
+  explicacion:
+    es: "Homo sapiens, hace unos 195.000 años: somos nosotros."
+    va: "Homo sapiens, fa uns 195.000 anys: som nosaltres."
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-041
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo empieza la prehistoria?
+    va: Quan comença la prehistòria?
+  correcta:
+    es: Hace unos 5 millones de años
+    va: Fa uns 5 milions d'anys
+  incorrectas:
+    - es: Hace unos 5.000 años
+      va: Fa uns 5.000 anys
+    - es: Hace unos 10.000 años
+      va: Fa uns 10.000 anys
+    - es: Hace unos 500.000 años
+      va: Fa uns 500.000 anys
+  explicacion:
+    es: Con los primeros humanos, hace unos 5 millones de años.
+    va: Amb els primers humans, fa uns 5 milions d'anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-042
+  tema: evolucion
+  tipo: multiple
+  pregunta:
+    es: ¿Qué diferencia hay entre prehistoria y Paleolítico?
+    va: Quina diferència hi ha entre prehistòria i Paleolític?
+  correcta:
+    es: El Paleolítico es solo la primera etapa de la prehistoria
+    va: El Paleolític és només la primera etapa de la prehistòria
+  incorrectas:
+    - es: Son exactamente lo mismo
+      va: Són exactament el mateix
+    - es: La prehistoria es solo la edad de los metales
+      va: La prehistòria és només l'edat dels metalls
+    - es: El Paleolítico viene después de la escritura
+      va: El Paleolític ve després de l'escriptura
+  explicacion:
+    es: La prehistoria incluye Paleolítico, Neolítico y edad de los metales.
+    va: La prehistòria inclou el Paleolític, el Neolític i l'edat dels metalls.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-043
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo termina el Paleolítico?
+    va: Quan acaba el Paleolític?
+  correcta:
+    es: Hace unos 10.000 años
+    va: Fa uns 10.000 anys
+  incorrectas:
+    - es: Hace unos 5.000 años
+      va: Fa uns 5.000 anys
+    - es: Hace unos 7.000 años
+      va: Fa uns 7.000 anys
+    - es: Hace unos 500.000 años
+      va: Fa uns 500.000 anys
+  explicacion:
+    es: El Paleolítico llega hasta hace unos 10.000 años.
+    va: El Paleolític arriba fins a fa uns 10.000 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-044
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: Las personas nómadas son las que…
+    va: Les persones nòmades són les que…
+  correcta:
+    es: no viven siempre en el mismo sitio
+    va: no viuen sempre en el mateix lloc
+  incorrectas:
+    - es: viven en poblados permanentes
+      va: viuen en poblats permanents
+    - es: cultivan campos
+      va: conreen camps
+    - es: construyen megalitos
+      va: construeixen megàlits
+  explicacion:
+    es: Los nómadas se desplazan buscando alimento.
+    va: Els nòmades es desplacen buscant aliment.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-045
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cómo conseguían los alimentos en el Paleolítico?
+    va: Com aconseguien els aliments en el Paleolític?
+  correcta:
+    es: Recolectaban, cazaban y pescaban
+    va: Recol·lectaven, caçaven i pescaven
+  incorrectas:
+    - es: Cultivaban trigo y cebada
+      va: Conreaven blat i ordi
+    - es: Criaban ovejas y cabras
+      va: Criaven ovelles i cabres
+    - es: Los compraban en el mercado
+      va: Els compraven al mercat
+  explicacion:
+    es: Recolección de frutos y raíces, caza y pesca.
+    va: Recol·lecció de fruits i arrels, caça i pesca.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-046
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuántas personas tenía una tribu?
+    va: Quantes persones tenia una tribu?
+  correcta:
+    es: De 20 a 40
+    va: De 20 a 40
+  incorrectas:
+    - es: De 2 a 5
+      va: De 2 a 5
+    - es: De 100 a 200
+      va: De 100 a 200
+    - es: Más de 1.000
+      va: Més de 1.000
+  explicacion:
+    es: Una tribu era un grupo de unas 20 a 40 personas.
+    va: Una tribu era un grup d'unes 20 a 40 persones.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-047
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Hace cuánto se empezó a usar el fuego, aproximadamente?
+    va: Fa quant de temps es va començar a usar el foc, aproximadament?
+  correcta:
+    es: Hace unos 500.000 años
+    va: Fa uns 500.000 anys
+  incorrectas:
+    - es: Hace unos 5.000 años
+      va: Fa uns 5.000 anys
+    - es: Hace unos 40.000 años
+      va: Fa uns 40.000 anys
+    - es: Hace unos 10.000 años
+      va: Fa uns 10.000 anys
+  explicacion:
+    es: "El fuego: hace unos 500.000 años."
+    va: "El foc: fa uns 500.000 anys."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-048
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿De qué materiales eran las herramientas del Paleolítico?
+    va: De quins materials eren les eines del Paleolític?
+  correcta:
+    es: Piedra (sílex), huesos y cuernos
+    va: Pedra (sílex), ossos i banyes
+  incorrectas:
+    - es: Cobre y bronce
+      va: Coure i bronze
+    - es: Hierro
+      va: Ferro
+    - es: Cerámica y lino
+      va: Ceràmica i lli
+  explicacion:
+    es: Piedra, huesos y cuernos de animales.
+    va: Pedra, ossos i banyes d'animals.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-049
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo se desarrolló el lenguaje, aproximadamente?
+    va: Quan es va desenvolupar el llenguatge, aproximadament?
+  correcta:
+    es: Entre hace 70.000 y 30.000 años
+    va: Entre fa 70.000 i 30.000 anys
+  incorrectas:
+    - es: Hace 5.000 años
+      va: Fa 5.000 anys
+    - es: Hace 500.000 años
+      va: Fa 500.000 anys
+    - es: Hace 7.000 años
+      va: Fa 7.000 anys
+  explicacion:
+    es: El lenguaje apareció entre hace 70.000 y 30.000 años.
+    va: El llenguatge va aparéixer entre fa 70.000 i 30.000 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-050
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo aparece el arte rupestre?
+    va: Quan apareix l'art rupestre?
+  correcta:
+    es: Hace unos 40.000 años
+    va: Fa uns 40.000 anys
+  incorrectas:
+    - es: Hace unos 4.000 años
+      va: Fa uns 4.000 anys
+    - es: Hace unos 400.000 años
+      va: Fa uns 400.000 anys
+    - es: Hace unos 7.000 años
+      va: Fa uns 7.000 anys
+  explicacion:
+    es: El arte rupestre aparece hace unos 40.000 años.
+    va: L'art rupestre apareix fa uns 40.000 anys.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-051
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Dónde vivían las personas del Paleolítico?
+    va: On vivien les persones del Paleolític?
+  correcta:
+    es: En cuevas o en cabañas fáciles de montar y desmontar
+    va: En coves o en cabanes fàcils de muntar i desmuntar
+  incorrectas:
+    - es: En poblados amurallados
+      va: En poblats emmurallats
+    - es: En casas permanentes junto a los campos
+      va: En cases permanents al costat dels camps
+    - es: En barcos de vela
+      va: En vaixells de vela
+  explicacion:
+    es: "Eran nómadas: cuevas naturales o cabañas desmontables, cerca de ríos o lagos."
+    va: "Eren nòmades: coves naturals o cabanes desmuntables, prop de rius o llacs."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-052
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuál de estos objetos se hacía en el Paleolítico?
+    va: Quin d'aquests objectes es feia en el Paleolític?
+  correcta:
+    es: Arpones y anzuelos
+    va: Arpons i hams
+  incorrectas:
+    - es: Hoces
+      va: Falçs
+    - es: Telares
+      va: Telers
+    - es: Molinos de mano
+      va: Molins de mà
+  explicacion:
+    es: Hoces, telares y molinos son del Neolítico.
+    va: Les falçs, els telers i els molins són del Neolític.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-053
+  tema: paleolitico
+  tipo: multiple
+  pregunta:
+    es: Los bifaces, las lascas y los raspadores son herramientas del…
+    va: Els bifaços, les ascles i els rascadors són eines del…
+  correcta:
+    es: Paleolítico
+    va: Paleolític
+  incorrectas:
+    - es: Neolítico
+      va: Neolític
+    - es: Edad de los metales
+      va: Edat dels metalls
+    - es: Edad Media
+      va: Edat Mitjana
+  explicacion:
+    es: Son herramientas de piedra del Paleolítico.
+    va: Són eines de pedra del Paleolític.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-054
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo fue el Neolítico?
+    va: Quan va ser el Neolític?
+  correcta:
+    es: De hace 10.000 a 7.000 años
+    va: De fa 10.000 a 7.000 anys
+  incorrectas:
+    - es: De hace 5 millones a 10.000 años
+      va: De fa 5 milions a 10.000 anys
+    - es: De hace 7.000 a 5.000 años
+      va: De fa 7.000 a 5.000 anys
+    - es: De hace 500.000 a 40.000 años
+      va: De fa 500.000 a 40.000 anys
+  explicacion:
+    es: "Neolítico: de hace unos 10.000 a 7.000 años."
+    va: "Neolític: de fa uns 10.000 a 7.000 anys."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-055
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Qué inventaron en el Neolítico?
+    va: Què van inventar en el Neolític?
+  correcta:
+    es: La agricultura y la ganadería
+    va: L'agricultura i la ramaderia
+  incorrectas:
+    - es: El fuego
+      va: El foc
+    - es: La escritura
+      va: L'escriptura
+    - es: El arte rupestre
+      va: L'art rupestre
+  explicacion:
+    es: Empezaron a producir sus alimentos.
+    va: Van començar a produir els seus aliments.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-056
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: Las personas sedentarias son las que…
+    va: Les persones sedentàries són les que…
+  correcta:
+    es: viven de forma permanente en un lugar
+    va: viuen de manera permanent en un lloc
+  incorrectas:
+    - es: viajan siguiendo a los animales
+      va: viatgen seguint els animals
+    - es: viven solo en cuevas
+      va: viuen només en coves
+    - es: no tienen herramientas
+      va: no tenen eines
+  explicacion:
+    es: "Sedentario: vive de forma permanente en un lugar."
+    va: "Sedentari: viu de manera permanent en un lloc."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-057
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Dónde vivían en el Neolítico?
+    va: On vivien en el Neolític?
+  correcta:
+    es: En aldeas o poblados permanentes cerca de los campos
+    va: En aldees o poblats permanents prop dels camps
+  incorrectas:
+    - es: En cuevas, siguiendo a los animales
+      va: En coves, seguint els animals
+    - es: En barcos
+      va: En vaixells
+    - es: En campamentos que montaban cada día
+      va: En campaments que muntaven cada dia
+  explicacion:
+    es: Eran sedentarios y vivían cerca de sus cultivos.
+    va: Eren sedentaris i vivien prop dels seus conreus.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-058
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Para qué sirve un telar?
+    va: Per a què serveix un teler?
+  correcta:
+    es: Para fabricar tejidos
+    va: Per a fabricar teixits
+  incorrectas:
+    - es: Para encender fuego
+      va: Per a encendre foc
+    - es: Para cortar la hierba
+      va: Per a tallar l'herba
+    - es: Para pintar cuevas
+      va: Per a pintar coves
+  explicacion:
+    es: El telar apareció en el Neolítico para hacer tejidos.
+    va: El teler va aparéixer en el Neolític per a fer teixits.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-059
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿De qué eran las hachas del Neolítico?
+    va: De què eren les destrals del Neolític?
+  correcta:
+    es: Piedra pulida
+    va: Pedra polida
+  incorrectas:
+    - es: Bronce
+      va: Bronze
+    - es: Hierro
+      va: Ferro
+    - es: Cobre
+      va: Coure
+  explicacion:
+    es: Hachas de piedra pulida, azadas, hoces…
+    va: Destrals de pedra polida, aixades, falçs…
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-060
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: Las hoces, las azadas y los molinos de mano son herramientas del…
+    va: Les falçs, les aixades i els molins de mà són eines del…
+  correcta:
+    es: Neolítico
+    va: Neolític
+  incorrectas:
+    - es: Paleolítico
+      va: Paleolític
+    - es: Edad de los metales
+      va: Edat dels metalls
+    - es: Edad Antigua
+      va: Edat Antiga
+  explicacion:
+    es: Sirven para cultivar y moler el grano.
+    va: Serveixen per a conrear i moldre el gra.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-061
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: La cerámica del Neolítico se usaba para hacer…
+    va: La ceràmica del Neolític s'usava per a fer…
+  correcta:
+    es: recipientes y cuencos
+    va: recipients i bols
+  incorrectas:
+    - es: hachas de metal
+      va: destrals de metall
+    - es: puntas de flecha
+      va: puntes de fletxa
+    - es: pinturas rupestres
+      va: pintures rupestres
+  explicacion:
+    es: Recipientes y cuencos de cerámica.
+    va: Atifells i bols de ceràmica.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-062
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo fue la edad de los metales?
+    va: Quan va ser l'edat dels metalls?
+  correcta:
+    es: De hace 7.000 a 5.000 años
+    va: De fa 7.000 a 5.000 anys
+  incorrectas:
+    - es: De hace 10.000 a 7.000 años
+      va: De fa 10.000 a 7.000 anys
+    - es: De hace 5 millones a 10.000 años
+      va: De fa 5 milions a 10.000 anys
+    - es: De hace 500.000 a 40.000 años
+      va: De fa 500.000 a 40.000 anys
+  explicacion:
+    es: "Edad de los metales: de hace 7.000 a 5.000 años."
+    va: "Edat dels metalls: de fa 7.000 a 5.000 anys."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-063
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿De qué material se hacían las herramientas en la edad de los metales?
+    va: De quin material es feien les eines en l'edat dels metalls?
+  correcta:
+    es: De metal
+    va: De metall
+  incorrectas:
+    - es: Solo de piedra
+      va: Només de pedra
+    - es: Solo de hueso
+      va: Només d'os
+    - es: De cerámica
+      va: De ceràmica
+  explicacion:
+    es: Herramientas más complejas y duraderas, de metal.
+    va: Eines més complexes i duradores, de metall.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-064
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Qué objetos de metal se fabricaban en la edad de los metales?
+    va: Quins objectes de metall es fabricaven en l'edat dels metalls?
+  correcta:
+    es: Hachas y joyas
+    va: Destrals i joies
+  incorrectas:
+    - es: Hoces de piedra
+      va: Falçs de pedra
+    - es: Telares
+      va: Telers
+    - es: Arpones de hueso
+      va: Arpons d'os
+  explicacion:
+    es: Hacha de metal y joyas de metal.
+    va: Destral de metall i joies de metall.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-065
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Qué dos inventos llegan con la edad de los metales?
+    va: Quins dos invents arriben amb l'edat dels metalls?
+  correcta:
+    es: La rueda y la vela
+    va: La roda i la vela
+  incorrectas:
+    - es: El fuego y el lenguaje
+      va: El foc i el llenguatge
+    - es: La agricultura y la ganadería
+      va: L'agricultura i la ramaderia
+    - es: La escritura y el papel
+      va: L'escriptura i el paper
+  explicacion:
+    es: El trabajo del metal, la rueda y la vela.
+    va: El treball del metall, la roda i la vela.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-066
+  tema: neolitico
+  tipo: multiple
+  pregunta:
+    es: ¿Cómo eran los poblados de la edad de los metales?
+    va: Com eren els poblats de l'edat dels metalls?
+  correcta:
+    es: A menudo fortificados o amurallados
+    va: Sovint fortificats o emmurallats
+  incorrectas:
+    - es: Siempre cuevas
+      va: Sempre coves
+    - es: Sin casas
+      va: Sense cases
+    - es: Móviles, se desmontaban cada día
+      va: Mòbils, es desmuntaven cada dia
+  explicacion:
+    es: Por ejemplo, Los Millares y El Argar.
+    va: Per exemple, Los Millares i El Argar.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-067
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿En qué año declaró la UNESCO a Atapuerca Patrimonio de la Humanidad?
+    va: En quin any va declarar la UNESCO Atapuerca Patrimoni de la Humanitat?
+  correcta:
+    es: En el año 2000
+    va: L'any 2000
+  incorrectas:
+    - es: En 1990
+      va: L'any 1990
+    - es: En 2010
+      va: L'any 2010
+    - es: En 1950
+      va: L'any 1950
+  explicacion:
+    es: "Atapuerca: Patrimonio de la UNESCO en el año 2000."
+    va: "Atapuerca: Patrimoni de la UNESCO l'any 2000."
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-068
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Qué antigüedad tiene la mandíbula de la Sima del Elefante, en Atapuerca?
+    va: Quina antiguitat té la mandíbula de la Sima del Elefante, a Atapuerca?
+  correcta:
+    es: 1.200.000 años
+    va: 1.200.000 anys
+  incorrectas:
+    - es: 12.000 años
+      va: 12.000 anys
+    - es: 120.000 años
+      va: 120.000 anys
+    - es: 800.000 años
+      va: 800.000 anys
+  explicacion:
+    es: Unos 1.200.000 años.
+    va: Uns 1.200.000 anys.
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-069
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: Los restos hallados en Orce tienen aproximadamente…
+    va: Les restes trobades a Orce tenen aproximadament…
+  correcta:
+    es: 1,4 millones de años
+    va: 1,4 milions d'anys
+  incorrectas:
+    - es: 14.000 años
+      va: 14.000 anys
+    - es: 140.000 años
+      va: 140.000 anys
+    - es: 4 millones de años
+      va: 4 milions d'anys
+  explicacion:
+    es: "Los restos de Orce: unos 1,4 millones de años."
+    va: "Les restes d'Orce: uns 1,4 milions d'anys."
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-070
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo empieza el Neolítico en España?
+    va: Quan comença el Neolític a Espanya?
+  correcta:
+    es: Hace unos 7.000 años
+    va: Fa uns 7.000 anys
+  incorrectas:
+    - es: Hace unos 10.000 años
+      va: Fa uns 10.000 anys
+    - es: Hace unos 4.000 años
+      va: Fa uns 4.000 anys
+    - es: Hace unos 500.000 años
+      va: Fa uns 500.000 anys
+  explicacion:
+    es: "En España llega más tarde: hace unos 7.000 años."
+    va: "A Espanya arriba més tard: fa uns 7.000 anys."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-071
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Cuándo empieza la edad de los metales en España?
+    va: Quan comença l'edat dels metalls a Espanya?
+  correcta:
+    es: Hace unos 4.000 años
+    va: Fa uns 4.000 anys
+  incorrectas:
+    - es: Hace unos 7.000 años
+      va: Fa uns 7.000 anys
+    - es: Hace unos 10.000 años
+      va: Fa uns 10.000 anys
+    - es: Hace unos 40.000 años
+      va: Fa uns 40.000 anys
+  explicacion:
+    es: "En España: hace unos 4.000 años."
+    va: "A Espanya: fa uns 4.000 anys."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-072
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: «Arte rupestre» significa…
+    va: «Art rupestre» significa…
+  correcta:
+    es: arte en las rocas
+    va: art en les roques
+  incorrectas:
+    - es: arte con metales
+      va: art amb metalls
+    - es: arte hecho con agua
+      va: art fet amb aigua
+    - es: arte de los reyes
+      va: art dels reis
+  explicacion:
+    es: "Rupestre viene de roca: pinturas y grabados en cuevas y rocas."
+    va: "Rupestre ve de roca: pintures i gravats en coves i roques."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-073
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Dónde están las cuevas de Altamira?
+    va: On estan les coves d'Altamira?
+  correcta:
+    es: En Cantabria
+    va: A Cantàbria
+  incorrectas:
+    - es: En Andalucía
+      va: A Andalusia
+    - es: En Valencia
+      va: A València
+    - es: En Cataluña
+      va: A Catalunya
+  explicacion:
+    es: Altamira está en Cantabria.
+    va: Altamira està a Cantàbria.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-074
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿En qué país están las cuevas de Lascaux?
+    va: En quin país estan les coves de Lascaux?
+  correcta:
+    es: En Francia
+    va: A França
+  incorrectas:
+    - es: En España
+      va: A Espanya
+    - es: En Italia
+      va: A Itàlia
+    - es: En Alemania
+      va: A Alemanya
+  explicacion:
+    es: Lascaux está en Francia.
+    va: Lascaux està a França.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-075
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Cómo es la pintura levantina?
+    va: Com és la pintura llevantina?
+  correcta:
+    es: Escenas de caza, danza o recolección al aire libre, con figuras humanas esquemáticas
+    va: Escenes de caça, dansa o recol·lecció a l'aire lliure, amb figures humanes esquemàtiques
+  incorrectas:
+    - es: Animales aislados muy realistas en lo profundo de las cuevas
+      va: Animals aïllats molt realistes al fons de les coves
+    - es: Esculturas de metal
+      va: Escultures de metall
+    - es: Dibujos hechos con ordenador
+      va: Dibuixos fets amb ordinador
+  explicacion:
+    es: Es monocroma y se pintaba en abrigos al aire libre.
+    va: És monocroma i es pintava en abrics a l'aire lliure.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-076
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Qué son los megalitos?
+    va: Què són els megàlits?
+  correcta:
+    es: Construcciones con enormes bloques de piedra, como menhires y dólmenes
+    va: Construccions amb enormes blocs de pedra, com menhirs i dòlmens
+  incorrectas:
+    - es: Herramientas de bronce
+      va: Eines de bronze
+    - es: Pinturas de las cuevas
+      va: Pintures de les coves
+    - es: Poblados amurallados
+      va: Poblats emmurallats
+  explicacion:
+    es: "Megalitismo: menhires, dólmenes y crómlech."
+    va: "Megalitisme: menhirs, dòlmens i cromlecs."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-077
+  tema: arte
+  tipo: multiple
+  pregunta:
+    es: ¿Cómo es el arte rupestre de Altamira y Lascaux?
+    va: Com és l'art rupestre d'Altamira i Lascaux?
+  correcta:
+    es: Animales aislados, muy realistas y de varios colores
+    va: Animals aïllats, molt realistes i de diversos colors
+  incorrectas:
+    - es: Escenas de danza en un solo color
+      va: Escenes de dansa d'un sol color
+    - es: Figuras humanas esquemáticas
+      va: Figures humanes esquemàtiques
+    - es: Dólmenes y menhires
+      va: Dòlmens i menhirs
+  explicacion:
+    es: "Es arte del Paleolítico: animales realistas y policromos."
+    va: "És art del Paleolític: animals realistes i policroms."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-078
+  tema: tiempo
+  tipo: ordenar
+  pregunta:
+    es: Ordena las edades de la historia, de la más antigua a la más reciente
+    va: Ordena les edats de la història, de la més antiga a la més recent
+  elementos:
+    - es: Prehistoria
+      va: Prehistòria
+    - es: Edad Antigua
+      va: Edat Antiga
+    - es: Edad Media
+      va: Edat Mitjana
+    - es: Edad Moderna
+      va: Edat Moderna
+    - es: Edad Contemporánea
+      va: Edat Contemporània
+  explicacion:
+    es: Prehistoria → Antigua (hasta 476) → Media (476–1492) → Moderna (1492–1789) → Contemporánea (desde 1789).
+    va: Prehistòria → Antiga (fins al 476) → Mitjana (476–1492) → Moderna (1492–1789) → Contemporània (des de 1789).
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-079
+  tema: tiempo
+  tipo: numerica
+  pregunta:
+    es: ¿En qué año empieza la Edad Moderna?
+    va: En quin any comença l'Edat Moderna?
+  respuesta: 1492
+  explicacion:
+    es: La Edad Moderna va de 1492 a 1789.
+    va: L'Edat Moderna va de 1492 a 1789.
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-080
+  tema: tiempo
+  tipo: numerica
+  pregunta:
+    es: ¿En qué año termina la Edad Antigua y empieza la Edad Media?
+    va: En quin any acaba l'Edat Antiga i comença l'Edat Mitjana?
+  respuesta: 476
+  explicacion:
+    es: "Edad Antigua: hasta el año 476. Edad Media: de 476 a 1492."
+    va: "Edat Antiga: fins a l'any 476. Edat Mitjana: de 476 a 1492."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-081
+  tema: evolucion
+  tipo: ordenar
+  pregunta:
+    es: Ordena estas especies de la más antigua a la más reciente
+    va: Ordena aquestes espècies de la més antiga a la més recent
+  elementos:
+    - es: Ardipithecus
+      va: Ardipithecus
+    - es: Homo erectus
+      va: Homo erectus
+    - es: Homo antecessor
+      va: Homo antecessor
+    - es: Homo neanderthalensis
+      va: Homo neanderthalensis
+    - es: Homo sapiens
+      va: Homo sapiens
+  explicacion:
+    es: Ardipithecus (hace 4,4 millones de años), H. erectus (1,5 millones), H. antecessor (800.000), H. neanderthalensis (200.000) y H. sapiens (195.000).
+    va: Ardipithecus (fa 4,4 milions d'anys), H. erectus (1,5 milions), H. antecessor (800.000), H. neanderthalensis (200.000) i H. sapiens (195.000).
+  fuente: Libro, unidad 8
+  verificada: true
+- id: hist-u08-082
+  tema: neolitico
+  tipo: ordenar
+  pregunta:
+    es: Ordena las etapas de la prehistoria, de la más antigua a la más reciente
+    va: Ordena les etapes de la prehistòria, de la més antiga a la més recent
+  elementos:
+    - es: Paleolítico
+      va: Paleolític
+    - es: Neolítico
+      va: Neolític
+    - es: Edad de los metales
+      va: Edat dels metalls
+  explicacion:
+    es: Paleolítico (hasta hace 10.000 años), Neolítico (de 10.000 a 7.000) y edad de los metales (de 7.000 a 5.000).
+    va: Paleolític (fins a fa 10.000 anys), Neolític (de 10.000 a 7.000) i edat dels metalls (de 7.000 a 5.000).
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-083
+  tema: paleolitico
+  tipo: verdadero_falso
+  pregunta:
+    es: En el Paleolítico las personas eran sedentarias.
+    va: En el Paleolític les persones eren sedentàries.
+  respuesta: false
+  explicacion:
+    es: "Falso: eran nómadas, no vivían siempre en el mismo sitio."
+    va: "Fals: eren nòmades, no vivien sempre en el mateix lloc."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-084
+  tema: fuentes
+  tipo: verdadero_falso
+  pregunta:
+    es: Una fotografía es una fuente iconográfica.
+    va: Una fotografia és una font iconogràfica.
+  respuesta: true
+  explicacion:
+    es: "Verdadero: las imágenes del pasado, como mapas y fotografías, son fuentes iconográficas."
+    va: "Vertader: les imatges del passat, com mapes i fotografies, són fonts iconogràfiques."
+  fuente: Hoja de repaso
+  verificada: true
+- id: hist-u08-085
+  tema: arte
+  tipo: verdadero_falso
+  pregunta:
+    es: Las cuevas de Lascaux están en España.
+    va: Les coves de Lascaux estan a Espanya.
+  respuesta: false
+  explicacion:
+    es: "Falso: Lascaux está en Francia; Altamira, en Cantabria."
+    va: "Fals: Lascaux està a França; Altamira, a Cantàbria."
+  fuente: Hoja de repaso
+  verificada: true

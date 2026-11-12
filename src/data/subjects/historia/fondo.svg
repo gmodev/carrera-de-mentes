@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="520" height="520">
+  <!-- Fondo de Historia: pinturas rupestres (Altamira, manos en negativo, arte levantino). Mosaico repetible. -->
+  <defs>
+    <g id="bison">
+      <path d="M6 44C4 38 8 32 14 30C16 22 22 16 28 14C34 4 48 2 58 8C72 14 92 16 104 20C114 24 118 32 116 42L118 60L112 60L110 48C102 52 94 52 88 50L88 62L82 62L80 50C68 54 56 54 46 52L44 64L38 64L36 52C32 54 28 56 26 54L24 64L18 64L18 54C14 56 10 60 8 56C6 52 6 48 6 44Z"/>
+      <path d="M16 30C10 26 10 18 16 15" fill="none" stroke-width="3" stroke-linecap="round"/>
+      <path d="M115 30C121 34 122 42 119 49" fill="none" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="13" cy="36" r="1.8" fill="#241638" stroke="none"/>
+    </g>
+    <g id="deer">
+      <path d="M20 40C22 32 40 30 60 32C70 33 76 34 80 36L90 18C92 14 99 14 101 18L97 23L88 42C86 47 82 50 77 51L77 72L73 72L71 53L37 53L33 72L29 72L29 51C23 49 19 45 20 40Z"/>
+      <path d="M92 15L86 3M88 8L81 6M95 14L100 2M98 7L105 6" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="hand">
+      <ellipse cx="30" cy="52" rx="17" ry="20"/>
+      <rect x="11" y="14" width="8" height="32" rx="4"/>
+      <rect x="20" y="6" width="8" height="34" rx="4"/>
+      <rect x="29" y="4" width="8" height="34" rx="4"/>
+      <rect x="38" y="10" width="8" height="32" rx="4"/>
+      <rect x="44" y="38" width="8" height="24" rx="4" transform="rotate(-38 48 50)"/>
+    </g>
+    <g id="hunter" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="6" r="4.5" stroke="none"/>
+      <path d="M20 11L17 30M17 30L7 46M17 30L29 44L34 47M19 16L32 14M19 16L10 24"/>
+      <path d="M34 3C42 10 42 22 32 28" />
+      <path d="M33 14L48 13"/>
+    </g>
+  </defs>
+
+  <g fill="#D08A4B" stroke="#D08A4B">
+    <use href="#bison" transform="translate(24 40)"/>
+    <use href="#bison" transform="translate(330 300) scale(-1.1 1.1) translate(-120 0)"/>
+    <use href="#deer" transform="translate(300 36) scale(.9)"/>
+    <use href="#deer" transform="translate(40 330) scale(-.85 .85) translate(-110 0)"/>
+  </g>
+  <g fill="#B5523A" stroke="#B5523A">
+    <use href="#hand" transform="translate(196 150) rotate(-14 30 40)"/>
+    <use href="#hand" transform="translate(440 160) rotate(18 30 40) scale(.8)"/>
+    <use href="#hand" transform="translate(220 420) rotate(-30 30 40) scale(.9)"/>
+    <use href="#hunter" transform="translate(150 290)"/>
+    <use href="#hunter" transform="translate(196 300) scale(.85)"/>
+    <use href="#hunter" transform="translate(420 440) scale(.9)"/>
+  </g>
+  <g fill="#D08A4B">
+    <circle cx="112" cy="180" r="4"/><circle cx="126" cy="180" r="4"/><circle cx="140" cy="180" r="4"/><circle cx="154" cy="180" r="4"/>
+    <circle cx="112" cy="194" r="4"/><circle cx="126" cy="194" r="4"/><circle cx="140" cy="194" r="4"/>
+    <circle cx="380" cy="250" r="3.5"/><circle cx="392" cy="242" r="3.5"/><circle cx="404" cy="250" r="3.5"/><circle cx="416" cy="242" r="3.5"/>
+    <circle cx="330" cy="470" r="4"/><circle cx="344" cy="476" r="4"/><circle cx="358" cy="470" r="4"/>
+  </g>
+  <g fill="none" stroke="#B5523A" stroke-width="3" stroke-linecap="round">
+    <path d="M60 470L60 500M70 466L70 504M80 470L80 500"/>
+    <path d="M470 60L500 60M470 72L500 72"/>
+  </g>
+</svg>

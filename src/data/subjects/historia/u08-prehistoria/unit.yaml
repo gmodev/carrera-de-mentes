@@ -1,0 +1,39 @@
+# Unidad 8: la prehistoria. Los 6 temas son los 6 colores de la ruleta (en este orden).
+id: u08-prehistoria
+orden: 8
+nombre: { es: "Unidad 8: La prehistoria", va: "Unitat 8: La prehistòria" }
+titulo: { es: Carrera de la Prehistoria, va: Carrera de la Prehistòria }
+descripcion:
+  es: Juego de preguntas de Historia, unidad 8. Gira la ruleta, contesta y reúne los 6 colores.
+  va: Joc de preguntes d'Història, unitat 8. Gira la ruleta, contesta i reuneix els 6 colors.
+temas:
+  - id: fuentes
+    nombre: { es: La historia y las fuentes, va: La història i les fonts }
+    corto: { es: Fuentes, va: Fonts }
+    emoji: "🔎"
+    color: "#5BA4FF"
+  - id: tiempo
+    nombre: { es: "El tiempo: siglos y edades", va: "El temps: segles i edats" }
+    corto: { es: Tiempo, va: Temps }
+    emoji: "⏳"
+    color: "#FFD23F"
+  - id: evolucion
+    nombre: { es: Evolución humana, va: Evolució humana }
+    corto: { es: Evolución, va: Evolució }
+    emoji: "🧬"
+    color: "#FF7AB6"
+  - id: paleolitico
+    nombre: { es: El Paleolítico, va: El Paleolític }
+    corto: { es: Paleolítico, va: Paleolític }
+    emoji: "🔥"
+    color: "#FF9F43"
+  - id: neolitico
+    nombre: { es: Neolítico y edad de los metales, va: Neolític i edat dels metalls }
+    corto: { es: Neolítico, va: Neolític }
+    emoji: "🌾"
+    color: "#4ADE80"
+  - id: arte
+    nombre: { es: Arte y España, va: Art i Espanya }
+    corto: { es: Arte, va: Art }
+    emoji: "🎨"
+    color: "#B79CFF"

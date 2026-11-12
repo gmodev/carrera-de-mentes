@@ -1,0 +1,56 @@
+---
+/**
+ * Página única. El contenido se carga y valida aquí, AL COMPILAR:
+ * si una pregunta no cumple el esquema, `npm run build` falla.
+ */
+import "../styles/global.css";
+import { loadContent } from "../data/load";
+
+const content = loadContent();
+const json = JSON.stringify(content).replace(/</g, "\\u003c");
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Carrera de mentes</title>
+    <meta name="description" content="Juego de preguntas para repasar: gira la ruleta, contesta y reúne los 6 colores." />
+    <meta name="theme-color" content="#241638" />
+    <link rel="manifest" href={`${base}manifest.webmanifest`} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}icons/apple-touch-icon.png`} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Nunito:wght@400;700;800&display=swap" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="title">
+          <h1 id="title">Carrera de mentes</h1>
+          <p id="tagline"></p>
+        </div>
+        <div class="hslot" id="hslot"></div>
+        <div class="tools">
+          <div class="seg" id="langs" role="group" aria-label="Idioma">
+            <button type="button" data-lang="es" aria-pressed="true">Castellano</button>
+            <button type="button" data-lang="va" aria-pressed="false">Valencià</button>
+          </div>
+          <button class="tog" id="bgm" type="button" aria-pressed="true">Música</button>
+          <button class="tog" id="snd" type="button" aria-pressed="true">Sonidos</button>
+        </div>
+      </header>
+      <main id="app"><noscript>Este juego necesita JavaScript.</noscript></main>
+    </div>
+    <canvas id="fx" hidden></canvas>
+    <script type="application/json" id="content-data" set:html={json}></script>
+    <script>
+      import "../main";
+    </script>
+  </body>
+</html>

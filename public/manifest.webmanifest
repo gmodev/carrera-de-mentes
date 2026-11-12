@@ -1,0 +1,18 @@
+{
+  "name": "Carrera de mentes",
+  "short_name": "Carrera",
+  "description": "Juego de preguntas para repasar: gira la ruleta, contesta y reúne los 6 colores.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#241638",
+  "theme_color": "#241638",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
